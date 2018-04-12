@@ -10,6 +10,8 @@ categories: GitHub
 ssh-keygen -t rsa -C "xxxx@xx.com"
 ```
 
+<!-- more -->
+
 2. 登录github，打开Account Settings ,选择 SSH Public Keys ，添加 ..\.ssh\id_rsa.pub 的内容
 
 3. 设置用户信息

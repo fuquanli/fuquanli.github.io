@@ -7,6 +7,8 @@ categories: 工具
 
 **GIT中常用的一些命令(持续更新中...)**
 
+<!-- more -->
+
 下载项目: 
 ```
 git clone https://***

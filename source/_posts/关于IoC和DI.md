@@ -1,11 +1,9 @@
 ---
-title: 高内聚和低耦合
+title: 关于IoC和DI
 date: 2018-04-12 10:50:58
-tags: 软件工程
+tags: 设计原则
 categories: 技术
 ---
-
-
 
 # IoC：Inversion of Control（控制反转）
 ## 谁控制谁？
@@ -17,6 +15,8 @@ categories: 技术
      反转：容器创建对注入依赖对象
 ## 为什么是反转？
      因为是容器帮助我们查找并注入依赖对象
+
+<!-- more -->
 
 # DI：Dependency Injection（依赖注入）
 由容器动态地将某个依赖关系注入到组件之中
