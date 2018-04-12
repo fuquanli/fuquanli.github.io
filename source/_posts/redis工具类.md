@@ -7,6 +7,9 @@ tags:
 categories: C#
 ---
 
+redis工具类
+
+<!-- more -->
 
 ```
 public class RedisConnector
@@ -57,7 +60,7 @@ public class RedisConnector
     public async static Task<bool> Store<T>(string key, T value, int expiry = 120, bool replace = false) => await RedisStore.StringSetAsync(key, JsonConvert.SerializeObject(value), TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);
 
     public static string Get(string key) => RedisStore.StringGet(key);
-    
+
     public static RedisParseResult<T> Get<T>(string key)
     {
         var storedValue = RedisStore.StringGet(key);
