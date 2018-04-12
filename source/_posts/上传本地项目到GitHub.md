@@ -1,7 +1,9 @@
 ---
 title: 上传本地项目到GitHub
 date: 2018-04-12 11:18:25
-tags: Git GitHub
+tags: 
+- Git
+- GitHub
 categories: GitHub
 ---
 
