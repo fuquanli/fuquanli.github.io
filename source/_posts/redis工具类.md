@@ -4,7 +4,7 @@ date: 2018-04-12 13:06:43
 tags: 
 - redis
 - C#
-categories: C#
+categories: 技术
 ---
 
 redis工具类
