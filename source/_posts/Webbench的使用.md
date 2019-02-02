@@ -13,7 +13,7 @@ categories: 技术
 
 * 编译安装
 ``` 
-root@ip-172-31-18-242:/home/ftp/webbench-1.5# make install
+root@ip:/home/ftp/webbench-1.5# make install
 cc -Wall -ggdb -W -O  -o webbench webbench.o  
 install -s webbench /usr/local/bin    
 install -m 644 webbench.1 /usr/local/man/man1    
@@ -23,7 +23,7 @@ install -m 644 debian/changelog /usr/local/share/doc/webbench
 ```
 * 使用
 ```
-root@ip-172-31-18-242:/home/ftp/webbench-1.5# webbench -c 100 http://fedupapi.azurewebsites.net/
+root@ip:/home/ftp/webbench-1.5# webbench -c 100 http://fedupapi.azurewebsites.net/
 Webbench - Simple Web Benchmark 1.5
 Copyright (c) Radim Kolar 1997-2004, GPL Open Source Software.
 
@@ -36,7 +36,7 @@ Requests: 5427 susceed, 0 failed.
 
 如果执行 make install 出错
 ```
-fuquan@iZwz9dbtqx34r905tw9mv7Z:~/WebBench$ make install
+xx@xx:~/WebBench$ make install
 cc -Wall -ggdb -W -O   -c -o webbench.o webbench.c
 webbench.c: In function ‘alarm_handler’:
 webbench.c:80:31: warning: unused parameter ‘signal’ [-Wunused-parameter]
