@@ -81,3 +81,9 @@ theme: next
   #type: git
   #repository: git@github.com:fuquanli/Blog.github.io.git
   #branch: master
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
