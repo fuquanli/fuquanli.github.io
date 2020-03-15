@@ -8,6 +8,8 @@ tags: .Netcore
   之前获取上传文件都是使用Request.Form.Files获取，直到这次
   改成定义形参 IFormFile时才遇到这个问题。  
 
+<!-- more -->
+
 ```C#
 // POST api/values
 [HttpPost]
