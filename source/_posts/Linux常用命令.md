@@ -11,7 +11,12 @@ categories: 系统
 
 查看端口使用情况
 ```
-netstat -ntpl
+netstat -ntpl #查看端口使用情况
+
+#查看所有端口
+netstat -aptn
+#方式测试远程主机端口是否打开
+telnet ip 端口号 
 ```
 
 删除文件夹
@@ -64,3 +69,34 @@ cp -r /tmp/a /root/a
 tar -zxvf ...
 
 ```
+
+开启防火墙端口
+
+```
+firewall-cmd --permanent --add-port=10050/tcp 
+firewall-cmd --reload
+```
+
+解压
+
+```
+#tar.gz
+tar -zxvf ...
+#7z
+7za x ...
+```
+
+vim输入：ins或i，wq保存，u撤销，ctrl+u取消撤销 q!退出
+
+软件相关
+
+```
+删除某软件
+删除安装包
+sudo apt-get remove zabbix-agent
+删除相关从属安装包
+sudo apt-get remove --auto-remove zabbix-agent
+清理相关配置文件
+sudo apt-get purge zabbix-agent
+```
+

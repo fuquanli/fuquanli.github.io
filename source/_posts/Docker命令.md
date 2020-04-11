@@ -16,6 +16,11 @@ docker rmi image_id #移除某镜像
 docker ps #查看正在运行的容器
 docker ps -a #查看所有容器
 
+停用全部运行中的容器:docker stop $(docker ps -q)
+删除全部容器：docker rm $(docker ps -aq)
+一条命令实现停用并删除容器 docker stop $(docker ps -q) & docker rm $(docker ps -aq)
+
+修改时区：docker cp /usr/share/zoneinfo/Asia/Shanghai 容器id:/etc/localtime
 
 管理命令： 
 container 管理容器 
@@ -33,6 +38,7 @@ volume 管理卷 
 
 普通命令： 
 Docker exec -it containerId /bin/bash 进入容器
+以root角色进入 ddocker exec -it -u root containerId /bin/bash
 
 build 从一个DockerFile构建镜像 
 commit 从容器创建一个镜像 
