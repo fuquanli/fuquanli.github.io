@@ -77,10 +77,10 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-#deploy:
-  #type: git
-  #repository: git@github.com:fuquanli/Blog.github.io.git
-  #branch: master
+ deploy:
+  type: git
+  repository: git@github.com:fuquanli/fuquan.github.io.git
+  branch: main
 
 search:
   path: search.xml
