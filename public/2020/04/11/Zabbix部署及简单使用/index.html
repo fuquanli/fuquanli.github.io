@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="运维," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="青梅煮酒" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Zabbix部署和简单使用   使用Docker容器部署Zabbix，并添加Windows和Linux服务器监测节点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zabbix部署和简单使用">
+<meta property="og:url" content="https://fuquanli.cn/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="青梅煮酒">
+<meta property="og:description" content="Zabbix部署和简单使用   使用Docker容器部署Zabbix，并添加Windows和Linux服务器监测节点。">
+<meta property="og:locale">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbhL4J.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/Gbh7HU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbhTBT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbLdZn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbLNrj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbLtMQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbLUqs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbLwaq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbTKQs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbTmWQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbTnzj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbTeJg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbbalQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/Gbbdyj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbqBge.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/GbqDjH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/11/Gbqsud.png">
+<meta property="article:published_time" content="2020-04-11T12:20:00.000Z">
+<meta property="article:modified_time" content="2023-05-17T13:58:26.704Z">
+<meta property="article:author" content="李怀瑾">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/11/GbhL4J.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fuquanli.cn/2020/04/11/Zabbix部署及简单使用/"/>
+
+
+
+
+
+  <title>Zabbix部署和简单使用 | 青梅煮酒</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cd05abe4954eac593da5d584b1d6cc4c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">青梅煮酒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">结硬寨，打呆仗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fuquanli.cn/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青梅煮酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Zabbix部署和简单使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-11T20:20:00+08:00">
+                2020-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/04/11/Zabbix部署及简单使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="leancloud_visitors" data-flag-title="Zabbix部署和简单使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>Zabbix部署和简单使用</strong></p>
+<p>  使用Docker容器部署Zabbix，并添加Windows和Linux服务器监测节点。</p>
+<span id="more"></span>
+
+<h2 id="Zabbix是什么"><a href="#Zabbix是什么" class="headerlink" title="Zabbix是什么"></a>Zabbix是什么</h2><p>Zabbix是一种网络监视、管理系统，基于Server-Client架构。可用于监视各种网络服务、服务器和网络机器等状态。</p>
+<p>可以监控如下资源</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbhL4J.png"></p>
+<h2 id="为什么要监控？"><a href="#为什么要监控？" class="headerlink" title="为什么要监控？"></a>为什么要监控？</h2><ol>
+<li>在需要的时刻，提前提醒我们服务器出问题了</li>
+<li>当出问题之后，可以找到问题根源</li>
+<li>实时观测网站&#x2F;服务器的可用性</li>
+</ol>
+<h2 id="工作模式"><a href="#工作模式" class="headerlink" title="工作模式"></a>工作模式</h2><p>分为主动模式和被动模式</p>
+<ol>
+<li>主动模式：客户端主动把自己监测到的数据上报给服务端，服务端不需要向客户端发起请求</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2020/04/11/Gbh7HU.png"></p>
+<ol start="2">
+<li><p>被动模式：服务端向客户端发起请求，告诉客户端我需要哪些数据，然后客户端执行相关操作，把执行结果返回给服务端</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbhTBT.png"></p>
+</li>
+</ol>
+<h2 id="自动发现与自动注册"><a href="#自动发现与自动注册" class="headerlink" title="自动发现与自动注册"></a>自动发现与自动注册</h2><ol>
+<li><p>自动发现：zabbix主动发现所有客户端，扫描设定的IP段。缺点是压力大，时间长</p>
+</li>
+<li><p>自动注册：zabbix agent主动到zabbix Server上报到，登记；缺点agent有可能找不到Server（配置出错）</p>
+<p>自动注册配置：</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbLdZn.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbLNrj.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbLtMQ.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbLUqs.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbLwaq.png"></p>
+</li>
+</ol>
+<h2 id="使用Docker安装Zabbix服务端"><a href="#使用Docker安装Zabbix服务端" class="headerlink" title="使用Docker安装Zabbix服务端"></a>使用Docker安装Zabbix服务端</h2><p>安装必须组件 mysql5.7、zabbix-server-mysql和zabbix-web-nginx-mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 启动mysql5.7实例</span><br><span class="line">docker run --name mysql-server -t -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  -v /data/mysql5.7/data:/var/lib/mysql -v /data/mysql/etc:/etc/mysql/conf.d   -e MYSQL_DATABASE=&quot;zabbix&quot;       -e MYSQL_USER=&quot;zabbix&quot;       -e MYSQL_PASSWORD=&quot;zabbix&quot;       -e MYSQL_ROOT_PASSWORD=&quot;zabbix&quot;       -d mysql:5.7  --character-set-server=utf8 --collation-server=utf8_bin</span><br><span class="line"></span><br><span class="line"># 启动Zabbix server实例，并关联这个实例到已创建的MySQL服务器实例</span><br><span class="line">docker run --name zabbix-server-mysql -t  -e PHP_TZ=&quot;Asia/Shanghai&quot; -v /etc/timezone:/etc/timezone  -v /etc/localtime:/etc/localtime   -e DB_SERVER_HOST=&quot;mysql-server&quot;       -e MYSQL_DATABASE=&quot;zabbix&quot;       -e MYSQL_USER=&quot;zabbix&quot;       -e MYSQL_PASSWORD=&quot;zabbix&quot;       -e MYSQL_ROOT_PASSWORD=&quot;zabbix&quot;       --link mysql-server:mysql       -p 10051:10051       -d zabbix/zabbix-server-mysql:latest</span><br><span class="line"></span><br><span class="line"># 启动Zabbix web 接口，并将它与MySQL服务器实例和Zabbix server实例关联</span><br><span class="line">docker run --name zabbix-web-nginx-mysql -t -e PHP_TZ=&quot;Asia/Shanghai&quot; -v /etc/timezone:/etc/timezone  -v /etc/localtime:/etc/localtime     -e DB_SERVER_HOST=&quot;mysql-server&quot;       -e MYSQL_DATABASE=&quot;zabbix&quot;       -e MYSQL_USER=&quot;zabbix&quot;       -e MYSQL_PASSWORD=&quot;zabbix&quot;       -e MYSQL_ROOT_PASSWORD=&quot;zabbix&quot;       --link mysql-server:mysql       --link zabbix-server-mysql:zabbix-server       -p 80:80       -d zabbix/zabbix-web-nginx-mysql:latest</span><br></pre></td></tr></table></figure>
+
+<p>修改每个容器时区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp /usr/share/zoneinfo/Asia/Shanghai containerId:/etc/localtime</span><br></pre></td></tr></table></figure>
+
+<p>解决中文乱码问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#找到字体所位置</span><br><span class="line">find -name DejaVuSans.ttf</span><br><span class="line">拷贝Windows下的C:\Windows\Fonts 宋体字体 到docker里</span><br><span class="line">随后备份DejaVuSans.ttf字体，并更名宋体为DejaVuSans.ttf，刷新页面可看到效果</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加服务器"><a href="#添加服务器" class="headerlink" title="添加服务器"></a>添加服务器</h2><p><strong>添加一台Windows服务器</strong></p>
+<p>客户端操作：</p>
+<p><a target="_blank" rel="noopener" href="https://www.zabbix.com/cn/download_agents">下载Zabbix Agent客户端</a>，并安装到被监测的主机上</p>
+<p>Server和ServerActive均设置为监控服务器的IP</p>
+<p>若Zabbix服务器在内网，被监控对象在外网，则需要拿到监控服务端的外网IP。</p>
+<p>如何获取外网IP？</p>
+<p>先在zabbix服务器使用telnet命令连客户端的10050端口，然后在客户端使用netstat -an | grep 10050查看被那个IP访问了。</p>
+<p>Web操作：</p>
+<ol>
+<li><p>进入页面：【配置】-&gt;【主机】-&gt;【创建主机】</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbTKQs.png"></p>
+</li>
+<li><p>必填主机名、群组选择Templates&#x2F;Operating systems，agent代理程序的ip地址填被监控主机ip，端口不变为10050。</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbTmWQ.png"></p>
+</li>
+<li><p>选择Tab【模板】，选中Template OS Windows By zabbix agent</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbTnzj.png"></p>
+</li>
+<li><p>点击底部添加按钮，回到主机列表页</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbTeJg.png"></p>
+</li>
+</ol>
+<p><strong>添加一台Linux服务器</strong></p>
+<p>客户端操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#关闭SELinux (如果有)</span><br><span class="line">sed -i &quot;s/SELINUX=enforcing/SELINUX=disabled/&quot; /etc/selinux/config</span><br><span class="line">setenforce 0</span><br><span class="line">#防火墙设置，允许zabbix-agent的10050端口通过</span><br><span class="line">firewall-cmd --permanent --add-port=10050/tcp</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">#下载安装包并安装(Centos)</span><br><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.4/rhel/7/x86_64/zabbix-release-4.4-1.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent</span><br><span class="line">#下载安装包并安装(Ubuntu)</span><br><span class="line">wget http://repo.zabbix.com/zabbix/4.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.4-1+bionic_all.deb</span><br><span class="line">dpkg -i zabbix-release_4.4-1+bionic_all.deb</span><br><span class="line">apt update</span><br><span class="line">apt install zabbix-agent</span><br><span class="line">#安装完以后找到配置文件</span><br><span class="line">find -name &#x27;zabbix*&#x27;</span><br><span class="line">#修改内容：</span><br><span class="line">Server=&lt;zbx-server的ip&gt;</span><br><span class="line">ServerActive=&lt;zbx-server的ip&gt;</span><br><span class="line">Hostname=&lt;本机名字&gt;</span><br><span class="line">#启动agent</span><br><span class="line">systemctl start zabbix-agent.service</span><br><span class="line">systemctl status zabbix-agent.service</span><br></pre></td></tr></table></figure>
+
+<p>Web操作同添加Windows</p>
+<h2 id="添加MYSQL"><a href="#添加MYSQL" class="headerlink" title="添加MYSQL"></a>添加MYSQL</h2><p>客户端操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#创建一个mysql用户</span><br><span class="line">GRANT ALL ON . TO &#x27;zbx_monitor&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;zbx_monitor&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line">#在zabbix_agentd服务目录下创建my.cnf</span><br><span class="line">目前我使用的是windows系统，zabbix_agentd安装在C盘，故而在C盘顶层创建，内容为：</span><br><span class="line">[client]</span><br><span class="line">user=zbx_monitor</span><br><span class="line">password=zbx_monitor</span><br><span class="line"></span><br><span class="line">#Zabbix_agentd目录下的zabbix_agentd.conf.d增加一个配置文件,内容为：</span><br><span class="line"></span><br><span class="line">#template_db_mysql.conf created by Zabbix for &quot;Template DB MySQL&quot; and Zabbix 4.2</span><br><span class="line">#For OS Linux: You need create .my.cnf in zabbix-agent home directory (/etc/zabbix by default)</span><br><span class="line">#For OS Windows: You need add PATH to mysql and mysqladmin and create my.cnf in %WINDIR%\my.cnf,C:\my.cnf,BASEDIR\my.cnf https://dev.mysql.com/doc/refman/5.7/en/option-files.html</span><br><span class="line">#The file must have three strings:</span><br><span class="line">#[client]</span><br><span class="line">#user=zbx_monitor</span><br><span class="line">#password=&lt;password&gt;</span><br><span class="line">UserParameter=mysql.ping[*], mysqladmi</span><br><span class="line">UserParameter=mysql.get_status_variables[*], mysql -h&quot;$1&quot; -P&quot;$2&quot; -sNX -e &quot;show global status&quot;</span><br><span class="line">UserParameter=mysql.version[*], mysqladmin -s -h&quot;$1&quot; -P&quot;$2&quot; version</span><br><span class="line">UserParameter=mysql.db.discovery[*], mysql -h&quot;$1&quot; -P&quot;$2&quot; -sN -e &quot;show databases&quot;</span><br><span class="line">UserParameter=mysql.dbsize[*], mysql -h&quot;$1&quot; -P&quot;$2&quot; -sN -e &quot;SELECT SUM(DATA_LENGTH + INDEX_LENGTH) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=&#x27;$3&#x27;&quot;</span><br><span class="line">UserParameter=mysql.replication.discovery[*], mysql -h&quot;$1&quot; -P&quot;$2&quot; -sNX -e &quot;show slave status&quot;</span><br><span class="line">UserParameter=mysql.slave_status[*], mysql -h&quot;$1&quot; -P&quot;$2&quot; -sNX -e &quot;show slave status&quot;</span><br><span class="line"></span><br><span class="line">修改zabbix_agentd.conf,添加内容：</span><br><span class="line">Include=C:\Program Files\Zabbix Agent\zabbix_agentd.conf.d\*.conf</span><br><span class="line"></span><br><span class="line">重启zabbix_agent服务</span><br><span class="line"></span><br><span class="line">#到zabbix_mysql_server 监控主机测试mysql命令</span><br><span class="line">zabbix_get -s ip -p 10050 -k mysql.ping</span><br></pre></td></tr></table></figure>
+
+<p>Web操作：</p>
+<p>选择MYSQL所在主机</p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbbalQ.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/Gbbdyj.png"></p>
+<h2 id="添加网站"><a href="#添加网站" class="headerlink" title="添加网站"></a>添加网站</h2><p><img src="https://s1.ax1x.com/2020/04/11/GbqBge.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/GbqDjH.png"></p>
+<p><img src="https://s1.ax1x.com/2020/04/11/Gbqsud.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    李怀瑾
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fuquanli.cn/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" title="Zabbix部署和简单使用">https://fuquanli.cn/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/15/Docker%E9%85%8D%E7%BD%AE%E5%8A%A0%E9%80%9F%E5%99%A8/" rel="next" title="Docker配置加速器">
+                <i class="fa fa-chevron-left"></i> Docker配置加速器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fuquanli" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fuquan.li@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zabbix%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">Zabbix是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%9B%91%E6%8E%A7%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么要监控？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C"><span class="nav-number">4.</span> <span class="nav-text">自动发现与自动注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Zabbix%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">5.</span> <span class="nav-text">使用Docker安装Zabbix服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">添加服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0MYSQL"><span class="nav-number">7.</span> <span class="nav-text">添加MYSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%AB%99"><span class="nav-number">8.</span> <span class="nav-text">添加网站</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李怀瑾</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://fuquan.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://fuquanli.cn/2020/04/11/Zabbix%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/';
+          this.page.identifier = '2020/04/11/Zabbix部署及简单使用/';
+          this.page.title = 'Zabbix部署和简单使用';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://fuquan.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'alh3nnyoClegLzUt9LB7OB5y-gzGzoHsz',
+        appKey: 'Hq6lNxP3t2L9SQgyjr63y8LU',
+        placeholder: 'fuquan.li@Outlook.com',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("alh3nnyoClegLzUt9LB7OB5y-gzGzoHsz", "Hq6lNxP3t2L9SQgyjr63y8LU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
