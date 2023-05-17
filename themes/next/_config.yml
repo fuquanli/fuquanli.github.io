@@ -6,7 +6,7 @@
 # It's rebase to v6.0.0 and future maintenance will resume there
 # ===============================================================
 
-# ---------------------------------------------------------------
+# ---------------------------------------------------------------ƒ
 # Theme Core Configuration Settings
 # ---------------------------------------------------------------
 
@@ -92,11 +92,11 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: / || home
-  tags: /tags/ || tags
-  categories: /categories/ || th
-  archives: /archives/ || archive
-  about: /about/ || user
+  home: /||home
+  tags: /tags/||tags
+  categories: /categories/||th
+  archives: /archives/||archive
+  about: /about/||user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -129,7 +129,7 @@ scheme: Mist
 social:
   GitHub: https://github.com/fuquanli || github
   E-Mail: mailto:fuquan.li@outlook.com || envelope
-  WeiBo: https://weibo.com/leefuquan518 || weibo
+  #WeiBo: https://weibo.com/leefuquan518 || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
