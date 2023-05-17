@@ -1,3 +1,3 @@
-# Blog
+# Blog.github.io
 
-个人博客源码
+个人博客 - 李富泉
