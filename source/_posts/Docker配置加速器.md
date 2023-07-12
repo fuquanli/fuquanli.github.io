@@ -2,8 +2,8 @@
 title: Docker配置加速器
 date: 2020-03-15 16:21:30
 tags:
-- docker
-categories: 技术
+- Docker
+categories: Tool
 ---
 
 有时使用Docker拉取镜像慢如蜗牛，这个时候就需要配置下加速器，Docker 官方和国内很多云服务商都提供了国内加速器服务。

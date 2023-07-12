@@ -2,7 +2,7 @@
 title: Python学习笔记-Python数据类型
 date: 2018-03-27 08:54:00
 tags: Python
-categories: 技术
+categories: Technology 
 ---
 
   ### 整数  

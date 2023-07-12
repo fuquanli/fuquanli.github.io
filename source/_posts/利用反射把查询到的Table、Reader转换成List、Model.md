@@ -3,8 +3,8 @@ title: 利用反射把查询到的Table、Reader转换成List、Model
 date: 2018-04-12 11:58:49
 tags: 
 - C#
-- 反射 
-categories: 技术
+- Reflex 
+categories: Technology
 ---
 
 纯粹写着玩，在不使用ORM工具的情况下通过反正转换类型。

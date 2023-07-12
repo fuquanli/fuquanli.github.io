@@ -2,8 +2,8 @@
 title: Docker命令
 date: 2020-03-15 16:13:30
 tags:
-- docker
-categories: 技术
+- Docker
+categories: Tool
 ---
 
 docker 常用命令

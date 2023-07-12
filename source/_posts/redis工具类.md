@@ -1,10 +1,10 @@
 ---
-title: redis工具类
+title: Redis工具类
 date: 2018-04-12 13:06:43
 tags: 
-- redis
+- Redis
 - C#
-categories: 技术
+categories: Technology
 ---
 
 redis工具类

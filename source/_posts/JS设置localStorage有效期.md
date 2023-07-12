@@ -2,7 +2,7 @@
 title: JS设置localStorage有效期
 date: 2018-09-03 08:54:00
 tags: js
-categories: 技术
+categories: Technology
 ---
 
   localStorage是一个没有时间限制的数据存储，如果没有手动删除它，它将永久保存。但是有些时候我们又需要它在一段时间后自动删除，这里我们可以对它进行扩展。

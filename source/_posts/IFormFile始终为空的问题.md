@@ -1,8 +1,8 @@
 ---
-layout: .netcore
 title: IFormFile始终为空的问题
 date: 2019-11-04 22:26:45
 tags: .Netcore
+categories: Technology
 ---
 
   之前获取上传文件都是使用Request.Form.Files获取，直到这次

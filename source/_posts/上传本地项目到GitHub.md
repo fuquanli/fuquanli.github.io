@@ -4,7 +4,7 @@ date: 2018-04-12 11:18:25
 tags: 
 - Git
 - GitHub
-categories: GitHub
+categories: Tool
 ---
 
 1. 生成ssh秘钥

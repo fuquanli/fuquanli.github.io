@@ -1,8 +1,8 @@
 ---
 title: 关于IoC和DI
 date: 2018-04-12 10:50:58
-tags: 设计原则
-categories: 技术
+tags: Design
+categories: Technology
 ---
 
 # IoC：Inversion of Control（控制反转）

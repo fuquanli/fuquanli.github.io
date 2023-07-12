@@ -2,9 +2,9 @@
 title: Ubuntu部署netcore网站
 date: 2020-03-15 16:13:30
 tags:
-- ubuntu
+- Ubuntu
 - .Netcore
-categories: 技术
+categories: Technology
 ---
 
 Docker部署netcore网站，并使用Docker nginx 作为正向代理；

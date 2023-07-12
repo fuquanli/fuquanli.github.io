@@ -1,8 +1,8 @@
 ---
 title: Zabbix部署和简单使用
 date: 2020-04-11 20:20:00
-tags: 运维
-categories: 技术
+tags: O&M
+categories: Tool
 ---
 
 **Zabbix部署和简单使用**

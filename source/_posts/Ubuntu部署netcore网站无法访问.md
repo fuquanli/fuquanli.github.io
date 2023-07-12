@@ -2,9 +2,9 @@
 title: Ubuntu部署netcore网站无法访问
 date: 2020-03-15 16:13:30
 tags:
-- ubuntu
+- Ubuntu
 - .Netcore
-categories: 技术
+categories: Technology
 ---
 
 记录一次发布.netcore网站到linux上的问题

@@ -2,7 +2,7 @@
 title: linux常用命令
 date: 2018-04-12 10:58:20
 tags: Linux
-categories: 系统
+categories: System
 ---
 
 **Linux中常用的一些命令，记录下来方便日后查询(持续更新中...)**
