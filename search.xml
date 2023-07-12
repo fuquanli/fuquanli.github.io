@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Docker命令</title>
-    <url>/2020/03/15/Docker%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>docker 常用命令</p>
-<span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images <span class="comment">#输出所有镜像</span></span><br><span class="line">docker rmi image_id <span class="comment">#移除某镜像</span></span><br><span class="line">docker ps <span class="comment">#查看正在运行的容器</span></span><br><span class="line">docker ps -a <span class="comment">#查看所有容器</span></span><br><span class="line"></span><br><span class="line">停用全部运行中的容器:docker stop $(docker ps -q)</span><br><span class="line">删除全部容器：docker <span class="built_in">rm</span> $(docker ps -aq)</span><br><span class="line">一条命令实现停用并删除容器 docker stop $(docker ps -q) &amp; docker <span class="built_in">rm</span> $(docker ps -aq)</span><br><span class="line"></span><br><span class="line">修改时区：docker <span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai 容器<span class="built_in">id</span>:/etc/localtime</span><br><span class="line"></span><br><span class="line">管理命令： </span><br><span class="line">container 管理容器 </span><br><span class="line">image 管理镜像 </span><br><span class="line">network 管理网络 </span><br><span class="line">node 管理Swarm节点 </span><br><span class="line">plugin 管理插件 </span><br><span class="line">secret 管理Docker secrets </span><br><span class="line">service 管理服务 </span><br><span class="line">stack 管理Docker stacks </span><br><span class="line">swarm 管理Swarm集群 </span><br><span class="line">system 查看系统信息 </span><br><span class="line">volume 管理卷 </span><br><span class="line">如：docker container <span class="built_in">ls</span> 显示所有容器 </span><br><span class="line"></span><br><span class="line">普通命令： </span><br><span class="line">Docker <span class="built_in">exec</span> -it containerId /bin/bash 进入容器</span><br><span class="line">以root角色进入 ddocker <span class="built_in">exec</span> -it -u root containerId /bin/bash</span><br><span class="line"></span><br><span class="line">build 从一个DockerFile构建镜像 </span><br><span class="line">commit 从容器创建一个镜像 </span><br><span class="line"><span class="built_in">cp</span> 从容器和主机文件系统之间拷贝文件 </span><br><span class="line">create 创建一个容器 </span><br><span class="line">diff 检查容器文件系统上的更改</span><br><span class="line">events 从服务器获取实时事件 </span><br><span class="line"><span class="built_in">exec</span> 在正在运行的容器中运行命令 </span><br><span class="line"><span class="built_in">export</span> 将容器的文件系统导出为tar存档 </span><br><span class="line"><span class="built_in">history</span> 显示镜像的历史记录 </span><br><span class="line">images 查看镜像列表 </span><br><span class="line">import 从归档文件中创建镜像 </span><br><span class="line">info 显示系统范围的信息 </span><br><span class="line">inspect 返回Docker对象的低级信息 </span><br><span class="line"><span class="built_in">kill</span> <span class="built_in">kill</span>运行中的容器 </span><br><span class="line">load 从存档或者STDIN加载镜像 </span><br><span class="line">login 登陆docker镜像仓库 </span><br><span class="line"><span class="built_in">logout</span> 退出docker镜像仓库 </span><br><span class="line">logs 获取一个容器的日志 </span><br><span class="line">pause 暂停一个或多个容器中的所有进程 </span><br><span class="line">port 查看端口映射或容器的特定映射列表 </span><br><span class="line">ps 查看容器列表 </span><br><span class="line">pull 从镜像仓库拉取镜像 </span><br><span class="line">push 将本地的镜像上传到镜像仓库,要先登陆到镜像仓库</span><br><span class="line">rename 重命名容器 </span><br><span class="line">restart 重启容器 </span><br><span class="line"><span class="built_in">rm</span> 删除容器 </span><br><span class="line">rmi 删除镜像 </span><br><span class="line">run 创建一个新的容器并运行一个命令</span><br><span class="line">save 将指定镜像保存成 </span><br><span class="line">tar 归档文件 </span><br><span class="line">search 从Docker Hub搜索镜像 </span><br><span class="line">start 启动容器 </span><br><span class="line">stats 实时显示容器资源使用情况的统计信息</span><br><span class="line">stop 停止容器 </span><br><span class="line">tag 标记本地镜像，将其归入某一仓库</span><br><span class="line">top 展示一个容器中运行的进程 </span><br><span class="line">unpause 恢复容器中所有的进程 </span><br><span class="line">update 更新容器配置 </span><br><span class="line">version 显示Docker的版本信息 </span><br><span class="line"><span class="built_in">wait</span> 阻塞直到容器停止，然后打印退出代码 </span><br><span class="line">如：docker images 显示所有镜像</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker配置加速器</title>
     <url>/2020/03/15/Docker%E9%85%8D%E7%BD%AE%E5%8A%A0%E9%80%9F%E5%99%A8/</url>
     <content><![CDATA[<p>有时使用Docker拉取镜像慢如蜗牛，这个时候就需要配置下加速器，Docker 官方和国内很多云服务商都提供了国内加速器服务。</p>
@@ -44,41 +26,42 @@
 
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Tool</category>
       </categories>
       <tags>
-        <tag>docker</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
     <title>GIT常用命令</title>
-    <url>/2018/04/12/GIT%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><strong>GIT中常用的一些命令(持续更新中…)</strong></p>
+    <url>/2023/07/12/GIT%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><strong>GIT中常用的一些命令</strong></p>
 <span id="more"></span>
 
-<p>下载项目: </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://***</span><br></pre></td></tr></table></figure>
 
-<p>查看远程仓库:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作者：阮一峰 <a href="https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
+</blockquote>
+<p><img src="https://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="命令"></p>
+<h1 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line"><span class="variable">$</span> git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></span><br><span class="line"><span class="variable">$</span> git init [<span class="type">project</span>-<span class="type">name</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载一个项目和它的整个代码历史</span></span><br><span class="line"><span class="variable">$</span> git clone [<span class="type">url</span>]</span><br></pre></td></tr></table></figure>
 
-<p>查看分支本地文件： </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示当前的Git配置</span></span><br><span class="line"><span class="variable">$</span> git config <span class="literal">--list</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑Git配置文件</span></span><br><span class="line"><span class="variable">$</span> git config <span class="literal">-e</span> [--<span class="type">global</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line"><span class="variable">$</span> git config [--<span class="type">global</span>] user.name <span class="string">&quot;[name]&quot;</span></span><br><span class="line"><span class="variable">$</span> git config [--<span class="type">global</span>] user.email <span class="string">&quot;[email address]&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>本地分支关联远程主版本：获取代码使用pull<br>否则使用 git pull origin 远程主分支名：本地分支名</p>
-<p>提交修改文件:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add ****</span><br></pre></td></tr></table></figure>
+<h1 id="增加-x2F-删除文件"><a href="#增加-x2F-删除文件" class="headerlink" title="增加&#x2F;删除文件"></a>增加&#x2F;删除文件</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line"><span class="variable">$</span> git add [<span class="type">file1</span>] [<span class="type">file2</span>] ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加指定目录到暂存区，包括子目录</span></span><br><span class="line"><span class="variable">$</span> git add [<span class="type">dir</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加当前目录的所有文件到暂存区</span></span><br><span class="line"><span class="variable">$</span> git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加每个变化前，都会要求确认</span></span><br><span class="line"><span class="comment"># 对于同一个文件的多处变化，可以实现分次提交</span></span><br><span class="line"><span class="variable">$</span> git add <span class="literal">-p</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除工作区文件，并且将这次删除放入暂存区</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">rm</span> [<span class="type">file1</span>] [<span class="type">file2</span>] ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止追踪指定文件，但该文件会保留在工作区</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">rm</span> <span class="literal">--cached</span> [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改名文件，并且将这个改名放入暂存区</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">mv</span> [<span class="type">file</span>-<span class="type">original</span>] [<span class="type">file</span>-<span class="type">renamed</span>]</span><br></pre></td></tr></table></figure>
 
-<p>提交本地仓库 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;注释&#x27;</span><br></pre></td></tr></table></figure>
+<h1 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 提交暂存区到仓库区</span></span><br><span class="line"><span class="variable">$</span> git commit <span class="literal">-m</span> [<span class="type">message</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交暂存区的指定文件到仓库区</span></span><br><span class="line"><span class="variable">$</span> git commit [<span class="type">file1</span>] [<span class="type">file2</span>] ... <span class="literal">-m</span> [<span class="type">message</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交工作区自上次commit之后的变化，直接到仓库区</span></span><br><span class="line"><span class="variable">$</span> git commit <span class="literal">-a</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交时显示所有diff信息</span></span><br><span class="line"><span class="variable">$</span> git commit <span class="literal">-v</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用一次新的commit，替代上一次提交</span></span><br><span class="line"><span class="comment"># 如果代码没有任何新变化，则用来改写上一次commit的提交信息</span></span><br><span class="line"><span class="variable">$</span> git commit <span class="literal">--amend</span> <span class="literal">-m</span> [<span class="type">message</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重做上一次commit，并包括指定文件的新变化</span></span><br><span class="line"><span class="variable">$</span> git commit <span class="literal">--amend</span> [<span class="type">file1</span>] [<span class="type">file2</span>] ...</span><br></pre></td></tr></table></figure>
 
-<p>推送代码 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line"><span class="variable">$</span> git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line"><span class="variable">$</span> git branch <span class="literal">-r</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有本地分支和远程分支</span></span><br><span class="line"><span class="variable">$</span> git branch <span class="literal">-a</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line"><span class="variable">$</span> git branch [<span class="type">branch</span>-<span class="type">name</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line"><span class="variable">$</span> git checkout <span class="literal">-b</span> [<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，指向指定commit</span></span><br><span class="line"><span class="variable">$</span> git branch [<span class="type">branch</span>] [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，与指定的远程分支建立追踪关系</span></span><br><span class="line"><span class="variable">$</span> git branch <span class="literal">--track</span> [<span class="type">branch</span>] [<span class="type">remote</span>-<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定分支，并更新工作区</span></span><br><span class="line"><span class="variable">$</span> git checkout [<span class="type">branch</span>-<span class="type">name</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到上一个分支</span></span><br><span class="line"><span class="variable">$</span> git checkout -</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立追踪关系，在现有分支与指定的远程分支之间</span></span><br><span class="line"><span class="variable">$</span> git branch <span class="literal">--set-upstream</span> [<span class="type">branch</span>] [<span class="type">remote</span>-<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line"><span class="variable">$</span> git merge [<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择一个commit，合并进当前分支</span></span><br><span class="line"><span class="variable">$</span> git cherry<span class="literal">-pick</span> [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line"><span class="variable">$</span> git branch <span class="literal">-d</span> [<span class="type">branch</span>-<span class="type">name</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line"><span class="variable">$</span> git push origin <span class="literal">--delete</span> [<span class="type">branch</span>-<span class="type">name</span>]</span><br><span class="line"><span class="variable">$</span> git branch <span class="literal">-dr</span> [<span class="type">remote</span>/<span class="type">branch</span>]</span><br></pre></td></tr></table></figure>
 
-<p>错误： fatal: refusing to merge unrelated histories<br>  <em>拒绝合并不相关的项目</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories //强制合并</span><br></pre></td></tr></table></figure>]]></content>
+<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有tag</span></span><br><span class="line"><span class="variable">$</span> git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个tag在当前commit</span></span><br><span class="line"><span class="variable">$</span> git tag [<span class="type">tag</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个tag在指定commit</span></span><br><span class="line"><span class="variable">$</span> git tag [<span class="type">tag</span>] [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地tag</span></span><br><span class="line"><span class="variable">$</span> git tag <span class="literal">-d</span> [<span class="type">tag</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程tag</span></span><br><span class="line"><span class="variable">$</span> git push origin :refs/tags/[<span class="type">tagName</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看tag信息</span></span><br><span class="line"><span class="variable">$</span> git show [<span class="type">tag</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交指定tag</span></span><br><span class="line"><span class="variable">$</span> git push [<span class="type">remote</span>] [<span class="type">tag</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交所有tag</span></span><br><span class="line"><span class="variable">$</span> git push [<span class="type">remote</span>] <span class="literal">--tags</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，指向某个tag</span></span><br><span class="line"><span class="variable">$</span> git checkout <span class="literal">-b</span> [<span class="type">branch</span>] [<span class="type">tag</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示有变更的文件</span></span><br><span class="line"><span class="variable">$</span> git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前分支的版本历史</span></span><br><span class="line"><span class="variable">$</span> git log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示commit历史，以及每次commit发生变更的文件</span></span><br><span class="line"><span class="variable">$</span> git log <span class="literal">--stat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索提交历史，根据关键词</span></span><br><span class="line"><span class="variable">$</span> git log <span class="literal">-S</span> [<span class="type">keyword</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个commit之后的所有变动，每个commit占据一行</span></span><br><span class="line"><span class="variable">$</span> git log [<span class="type">tag</span>] HEAD <span class="literal">--pretty</span>=format:%s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件</span></span><br><span class="line"><span class="variable">$</span> git log [<span class="type">tag</span>] HEAD <span class="literal">--grep</span> feature</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个文件的版本历史，包括文件改名</span></span><br><span class="line"><span class="variable">$</span> git log <span class="literal">--follow</span> [<span class="type">file</span>]</span><br><span class="line"><span class="variable">$</span> git whatchanged [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示指定文件相关的每一次diff</span></span><br><span class="line"><span class="variable">$</span> git log <span class="literal">-p</span> [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示过去5次提交</span></span><br><span class="line"><span class="variable">$</span> git log <span class="literal">-5</span> <span class="literal">--pretty</span> <span class="literal">--oneline</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有提交过的用户，按提交次数排序</span></span><br><span class="line"><span class="variable">$</span> git shortlog <span class="literal">-sn</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示指定文件是什么人在什么时间修改过</span></span><br><span class="line"><span class="variable">$</span> git blame [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和工作区的差异</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">diff</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和上一个commit的差异</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">diff</span> <span class="literal">--cached</span> [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示工作区与当前分支最新commit之间的差异</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">diff</span> HEAD</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示两次提交之间的差异</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">diff</span> [<span class="type">first</span>-<span class="type">branch</span>]...[<span class="type">second</span>-<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示今天你写了多少行代码</span></span><br><span class="line"><span class="variable">$</span> git <span class="built_in">diff</span> <span class="literal">--shortstat</span> <span class="string">&quot;@&#123;0 day ago&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某次提交的元数据和内容变化</span></span><br><span class="line"><span class="variable">$</span> git show [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某次提交发生变化的文件</span></span><br><span class="line"><span class="variable">$</span> git show <span class="literal">--name-only</span> [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某次提交时，某个文件的内容</span></span><br><span class="line"><span class="variable">$</span> git show [<span class="type">commit</span>]:[<span class="type">filename</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前分支的最近几次提交</span></span><br><span class="line"><span class="variable">$</span> git reflog</span><br></pre></td></tr></table></figure>
+
+<h1 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载远程仓库的所有变动</span></span><br><span class="line"><span class="variable">$</span> git fetch [<span class="type">remote</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有远程仓库</span></span><br><span class="line"><span class="variable">$</span> git remote <span class="literal">-v</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个远程仓库的信息</span></span><br><span class="line"><span class="variable">$</span> git remote show [<span class="type">remote</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加一个新的远程仓库，并命名</span></span><br><span class="line"><span class="variable">$</span> git remote add [<span class="type">shortname</span>] [<span class="type">url</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取回远程仓库的变化，并与本地分支合并</span></span><br><span class="line"><span class="variable">$</span> git pull [<span class="type">remote</span>] [<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上传本地指定分支到远程仓库</span></span><br><span class="line"><span class="variable">$</span> git push [<span class="type">remote</span>] [<span class="type">branch</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强行推送当前分支到远程仓库，即使有冲突</span></span><br><span class="line"><span class="variable">$</span> git push [<span class="type">remote</span>] <span class="literal">--force</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送所有分支到远程仓库</span></span><br><span class="line"><span class="variable">$</span> git push [<span class="type">remote</span>] <span class="literal">--all</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 恢复暂存区的指定文件到工作区</span></span><br><span class="line"><span class="variable">$</span> git checkout [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复某个commit的指定文件到暂存区和工作区</span></span><br><span class="line"><span class="variable">$</span> git checkout [<span class="type">commit</span>] [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复暂存区的所有文件到工作区</span></span><br><span class="line"><span class="variable">$</span> git checkout .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span></span><br><span class="line"><span class="variable">$</span> git reset [<span class="type">file</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置暂存区与工作区，与上一次commit保持一致</span></span><br><span class="line"><span class="variable">$</span> git reset <span class="literal">--hard</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</span></span><br><span class="line"><span class="variable">$</span> git reset [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</span></span><br><span class="line"><span class="variable">$</span> git reset <span class="literal">--hard</span> [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置当前HEAD为指定commit，但保持暂存区和工作区不变</span></span><br><span class="line"><span class="variable">$</span> git reset <span class="literal">--keep</span> [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个commit，用来撤销指定commit</span></span><br><span class="line"><span class="comment"># 后者的所有变化都将被前者抵消，并且应用到当前分支</span></span><br><span class="line"><span class="variable">$</span> git revert [<span class="type">commit</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 暂时将未提交的变化移除，稍后再移入</span></span><br><span class="line"><span class="variable">$</span> git stash</span><br><span class="line"><span class="variable">$</span> git stash pop</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>工具</category>
+        <category>Tool</category>
       </categories>
       <tags>
         <tag>Git</tag>
@@ -104,8 +87,26 @@
 <p>方案出自：<a href="https://stackoverflow.com/questions/52294830/iformfile-is-always-null-when-receiving-file-from-console-app">IFormFile is always null when receiving file from console app</a></p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
       <tags>
         <tag>.Netcore</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS设置localStorage有效期</title>
+    <url>/2018/09/03/JS%E8%AE%BE%E7%BD%AElocalStorage%E6%9C%89%E6%95%88%E6%9C%9F/</url>
+    <content><![CDATA[<p>  localStorage是一个没有时间限制的数据存储，如果没有手动删除它，它将永久保存。但是有些时候我们又需要它在一段时间后自动删除，这里我们可以对它进行扩展。</p>
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"><span class="comment">//设置localStorage的值</span></span><br><span class="line">foowwLocalStorage.<span class="title function_">set</span>(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;你好&quot;</span>, date + <span class="number">10000</span>);</span><br><span class="line"><span class="comment">//获取localStorage的值</span></span><br><span class="line"><span class="keyword">var</span> data = foowwLocalStorage.<span class="title function_">get</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foowwLocalStorage = &#123;</span><br><span class="line">    <span class="attr">set</span>: <span class="keyword">function</span> (<span class="params">key, value, ttl_ms</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = &#123; <span class="attr">value</span>: value, <span class="attr">expirse</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(ttl_ms).<span class="title function_">getTime</span>() &#125;;</span><br><span class="line">        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(key, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data));</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(key));</span><br><span class="line">        <span class="keyword">if</span> (data !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">debugger</span></span><br><span class="line">            <span class="keyword">if</span> (data.<span class="property">expirse</span> != <span class="literal">null</span> &amp;&amp; data.<span class="property">expirse</span> &lt; <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()) &#123;</span><br><span class="line">                <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> data.<span class="property">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -150,7 +151,7 @@
 
 ]]></content>
       <categories>
-        <category>系统</category>
+        <category>System</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -224,25 +225,10 @@
 <p>通过 remove(key) 删除元素</p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Technology</category>
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS设置localStorage有效期</title>
-    <url>/2018/09/03/JS%E8%AE%BE%E7%BD%AElocalStorage%E6%9C%89%E6%95%88%E6%9C%9F/</url>
-    <content><![CDATA[<p>  localStorage是一个没有时间限制的数据存储，如果没有手动删除它，它将永久保存。但是有些时候我们又需要它在一段时间后自动删除，这里我们可以对它进行扩展。</p>
-<span id="more"></span>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"><span class="comment">//设置localStorage的值</span></span><br><span class="line">foowwLocalStorage.<span class="title function_">set</span>(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;你好&quot;</span>, date + <span class="number">10000</span>);</span><br><span class="line"><span class="comment">//获取localStorage的值</span></span><br><span class="line"><span class="keyword">var</span> data = foowwLocalStorage.<span class="title function_">get</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foowwLocalStorage = &#123;</span><br><span class="line">    <span class="attr">set</span>: <span class="keyword">function</span> (<span class="params">key, value, ttl_ms</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = &#123; <span class="attr">value</span>: value, <span class="attr">expirse</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(ttl_ms).<span class="title function_">getTime</span>() &#125;;</span><br><span class="line">        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(key, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data));</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(key));</span><br><span class="line">        <span class="keyword">if</span> (data !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">debugger</span></span><br><span class="line">            <span class="keyword">if</span> (data.<span class="property">expirse</span> != <span class="literal">null</span> &amp;&amp; data.<span class="property">expirse</span> &lt; <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()) &#123;</span><br><span class="line">                <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> data.<span class="property">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -280,57 +266,29 @@
 <p>Nginx部署完成，此刻直接输入ip可直接访问网站。</p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Technology</category>
       </categories>
       <tags>
         <tag>.Netcore</tag>
-        <tag>ubuntu</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu部署netcore网站无法访问</title>
-    <url>/2020/03/15/Ubuntu%E9%83%A8%E7%BD%B2netcore%E7%BD%91%E7%AB%99%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</url>
-    <content><![CDATA[<p>记录一次发布.netcore网站到linux上的问题</p>
+    <title>Docker命令</title>
+    <url>/2020/03/15/Docker%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>docker 常用命令</p>
 <span id="more"></span>
 
-<p>前几天应工作需要，在阿里云上部署一个测试站点。本以为分分钟的事情，没想到打脸了。</p>
-<p>当时直接新建一个webapi项目，publish后直接上传到阿里云，随后设置nginx转发网站端口5000。</p>
-<p>接着打开网站测试访问，结果傻眼了，502…..。</p>
-<p>于是乎，使用dotnet命令行启动，指定端口8080，更改nginx配置转而监听8080。测试，又打不开。</p>
-<p>明明是按照众大神的文章一步一步来的，怎么会出错呢？搞不明白。随后老老实实阅读微软官方文档，</p>
-<p>终于发现问题所在。原来是我没有设置Kestrel的监听端口。</p>
-<p>论基础的重要性！！！要好好读书o(╥﹏╥)o，夯实基本功。</p>
-<p>经历说完了，接下来说说如何配置网站端口。</p>
-<p>设置的方式有三种：</p>
-<p><strong>第一种：Program类的CreateHostBuilder方法指定Urls</strong></p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseUrls(<span class="string">&quot;http://*:8080&quot;</span>);</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images <span class="comment">#输出所有镜像</span></span><br><span class="line">docker rmi image_id <span class="comment">#移除某镜像</span></span><br><span class="line">docker ps <span class="comment">#查看正在运行的容器</span></span><br><span class="line">docker ps -a <span class="comment">#查看所有容器</span></span><br><span class="line"></span><br><span class="line">停用全部运行中的容器:docker stop $(docker ps -q)</span><br><span class="line">删除全部容器：docker <span class="built_in">rm</span> $(docker ps -aq)</span><br><span class="line">一条命令实现停用并删除容器 docker stop $(docker ps -q) &amp; docker <span class="built_in">rm</span> $(docker ps -aq)</span><br><span class="line"></span><br><span class="line">修改时区：docker <span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai 容器<span class="built_in">id</span>:/etc/localtime</span><br><span class="line"></span><br><span class="line">管理命令： </span><br><span class="line">container 管理容器 </span><br><span class="line">image 管理镜像 </span><br><span class="line">network 管理网络 </span><br><span class="line">node 管理Swarm节点 </span><br><span class="line">plugin 管理插件 </span><br><span class="line">secret 管理Docker secrets </span><br><span class="line">service 管理服务 </span><br><span class="line">stack 管理Docker stacks </span><br><span class="line">swarm 管理Swarm集群 </span><br><span class="line">system 查看系统信息 </span><br><span class="line">volume 管理卷 </span><br><span class="line">如：docker container <span class="built_in">ls</span> 显示所有容器 </span><br><span class="line"></span><br><span class="line">普通命令： </span><br><span class="line">Docker <span class="built_in">exec</span> -it containerId /bin/bash 进入容器</span><br><span class="line">以root角色进入 ddocker <span class="built_in">exec</span> -it -u root containerId /bin/bash</span><br><span class="line"></span><br><span class="line">build 从一个DockerFile构建镜像 </span><br><span class="line">commit 从容器创建一个镜像 </span><br><span class="line"><span class="built_in">cp</span> 从容器和主机文件系统之间拷贝文件 </span><br><span class="line">create 创建一个容器 </span><br><span class="line">diff 检查容器文件系统上的更改</span><br><span class="line">events 从服务器获取实时事件 </span><br><span class="line"><span class="built_in">exec</span> 在正在运行的容器中运行命令 </span><br><span class="line"><span class="built_in">export</span> 将容器的文件系统导出为tar存档 </span><br><span class="line"><span class="built_in">history</span> 显示镜像的历史记录 </span><br><span class="line">images 查看镜像列表 </span><br><span class="line">import 从归档文件中创建镜像 </span><br><span class="line">info 显示系统范围的信息 </span><br><span class="line">inspect 返回Docker对象的低级信息 </span><br><span class="line"><span class="built_in">kill</span> <span class="built_in">kill</span>运行中的容器 </span><br><span class="line">load 从存档或者STDIN加载镜像 </span><br><span class="line">login 登陆docker镜像仓库 </span><br><span class="line"><span class="built_in">logout</span> 退出docker镜像仓库 </span><br><span class="line">logs 获取一个容器的日志 </span><br><span class="line">pause 暂停一个或多个容器中的所有进程 </span><br><span class="line">port 查看端口映射或容器的特定映射列表 </span><br><span class="line">ps 查看容器列表 </span><br><span class="line">pull 从镜像仓库拉取镜像 </span><br><span class="line">push 将本地的镜像上传到镜像仓库,要先登陆到镜像仓库</span><br><span class="line">rename 重命名容器 </span><br><span class="line">restart 重启容器 </span><br><span class="line"><span class="built_in">rm</span> 删除容器 </span><br><span class="line">rmi 删除镜像 </span><br><span class="line">run 创建一个新的容器并运行一个命令</span><br><span class="line">save 将指定镜像保存成 </span><br><span class="line">tar 归档文件 </span><br><span class="line">search 从Docker Hub搜索镜像 </span><br><span class="line">start 启动容器 </span><br><span class="line">stats 实时显示容器资源使用情况的统计信息</span><br><span class="line">stop 停止容器 </span><br><span class="line">tag 标记本地镜像，将其归入某一仓库</span><br><span class="line">top 展示一个容器中运行的进程 </span><br><span class="line">unpause 恢复容器中所有的进程 </span><br><span class="line">update 更新容器配置 </span><br><span class="line">version 显示Docker的版本信息 </span><br><span class="line"><span class="built_in">wait</span> 阻塞直到容器停止，然后打印退出代码 </span><br><span class="line">如：docker images 显示所有镜像</span><br></pre></td></tr></table></figure>
 
-<p><strong>第二种：使用配置文件Hosting.json</strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;urls&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://*:8080&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>项目需要添加引用</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.FileExtensions&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.Json&quot;</span>: <span class="string">&quot;1.0.0&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>Program代码</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.SetBasePath(Directory.GetCurrentDirectory());</span><br><span class="line">                    configHost.AddJsonFile(<span class="string">&quot;hosting.json&quot;</span>, optional: <span class="literal">true</span>, reloadOnChange : <span class="literal">true</span>);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>第三种：使用命令行配置</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet demo.dll --environment development --urls <span class="string">&quot;http://*:8081&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>项目需要添加引用</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.CommandLine&quot;</span>: <span class="string">&quot;3.1.2&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>Program代码</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.AddCommandLine(args);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>注：三种方式可同时配置，但是具有优先级：UseUrls &lt; 文件配置 &lt; 命令行配置</p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Tool</category>
       </categories>
       <tags>
-        <tag>.Netcore</tag>
-        <tag>ubuntu</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -351,10 +309,10 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ctags </span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Tool</category>
       </categories>
       <tags>
-        <tag>测试</tag>
+        <tag>Test</tag>
       </tags>
   </entry>
   <entry>
@@ -442,10 +400,10 @@
 <p><img src="https://s1.ax1x.com/2020/04/11/Gbqsud.png"></p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Tool</category>
       </categories>
       <tags>
-        <tag>运维</tag>
+        <tag>O&amp;M</tag>
       </tags>
   </entry>
   <entry>
@@ -482,62 +440,11 @@
 </ol>
 ]]></content>
       <categories>
-        <category>GitHub</category>
+        <category>Tool</category>
       </categories>
       <tags>
         <tag>Git</tag>
         <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redis工具类</title>
-    <url>/2018/04/12/redis%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
-    <content><![CDATA[<p>redis工具类</p>
-<span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class RedisConnector</span><br><span class="line">&#123;</span><br><span class="line">    public class RedisParseResult&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public bool success;</span><br><span class="line">        public T value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static string ConnectionString &#123; get; set; &#125;</span><br><span class="line">    private static ConnectionMultiplexer RedisConnection &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">    public RedisConnector(string redisConnectionString)</span><br><span class="line">    &#123;</span><br><span class="line">        ConnectionString = redisConnectionString;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            RedisConnection = ConnectionMultiplexer.Connect(ConnectionString);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RedisConnectionException e)</span><br><span class="line">        &#123;</span><br><span class="line">            AILogger.LogError(e.Message, $&quot;Redis server : &#123;redisConnectionString&#125;&quot;).Wait();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void Initialize(string redisConnectionString)</span><br><span class="line">    &#123;</span><br><span class="line">        ConnectionString = redisConnectionString;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            RedisConnection = ConnectionMultiplexer.Connect(ConnectionString);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RedisConnectionException e)</span><br><span class="line">        &#123;</span><br><span class="line">            AILogger.LogError(e.Message, $&quot;Redis server : &#123;redisConnectionString&#125;&quot;).Wait();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static IDatabase RedisStore =&gt; (null != RedisConnection) ? RedisConnection.GetDatabase() : ConnectionMultiplexer.Connect(ConnectionString).GetDatabase();</span><br><span class="line"></span><br><span class="line">    public static ConnectionMultiplexer Redis =&gt; RedisConnection ?? ConnectionMultiplexer.Connect(ConnectionString);</span><br><span class="line"></span><br><span class="line">    public async static Task&lt;bool&gt; Store(string key, string value, int expiry = 120, bool replace = false) =&gt; await RedisStore.StringSetAsync(key, value, TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);</span><br><span class="line"></span><br><span class="line">    public async static Task&lt;bool&gt; Store(string key, long value, int expiry = 120, bool replace = false) =&gt; await RedisStore.StringSetAsync(key, value.ToString(), TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);</span><br><span class="line"></span><br><span class="line">    public async static Task&lt;bool&gt; Store&lt;T&gt;(string key, T value, int expiry = 120, bool replace = false) =&gt; await RedisStore.StringSetAsync(key, JsonConvert.SerializeObject(value), TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);</span><br><span class="line"></span><br><span class="line">    public static string Get(string key) =&gt; RedisStore.StringGet(key);</span><br><span class="line"></span><br><span class="line">    public static RedisParseResult&lt;T&gt; Get&lt;T&gt;(string key)</span><br><span class="line">    &#123;</span><br><span class="line">        var storedValue = RedisStore.StringGet(key);</span><br><span class="line">        if (string.IsNullOrEmpty(storedValue))</span><br><span class="line">            return new RedisParseResult&lt;T&gt; &#123; success = false &#125;;</span><br><span class="line">        else</span><br><span class="line">            return new RedisParseResult&lt;T&gt; &#123; success = true, value = JsonConvert.DeserializeObject&lt;T&gt;(storedValue) &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用反射把查询到的Table、Reader转换成List、Model</title>
-    <url>/2018/04/12/%E5%88%A9%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%8A%E6%9F%A5%E8%AF%A2%E5%88%B0%E7%9A%84Table%E3%80%81Reader%E8%BD%AC%E6%8D%A2%E6%88%90List%E3%80%81Model/</url>
-    <content><![CDATA[<p>纯粹写着玩，在不使用ORM工具的情况下通过反正转换类型。</p>
-<span id="more"></span>
-
-<p>通常我们从数据库查询到一个  DataReader  或者是  一个 Table , 想要转换成 一个 list 或者是<br>一个model 的话 , 一般情况下是使用foreach 循环reader或是table的rows，然后在循环内创建个对象，通过reader[“列名”]来赋值对象的属性。如果表的字段少的话，用这种方式还可以，速度也快一点。但是如果后续还会增加字段的话，那就非常麻烦了，要改很多地方。工作量太大，而且还很容易出错。所以这个时候使用反射来转换的话就非常便捷了。我们只管增加字段，改一下数据表对应的model，调用这个工具类的方法，传入相对应的参数就能得到想要的结果。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static List&lt;T&gt; ConvertToList&lt;T&gt;(DataTable dt)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;T&gt; list = new List&lt;T&gt;(); // 定义集合</span><br><span class="line">    Type type = typeof(T); // 获得此模型的类型</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    PropertyInfo[] propertys = type.GetProperties();// 获得此模型的公共属性</span><br><span class="line">    foreach (DataRow dr in dt.Rows)</span><br><span class="line">    &#123;</span><br><span class="line">        //新建一个模型</span><br><span class="line">        object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">        foreach (PropertyInfo pi in propertys)</span><br><span class="line">        &#123;</span><br><span class="line">            tempName = pi.Name;</span><br><span class="line">            if (dt.Columns.Contains(tempName))</span><br><span class="line">            &#123;</span><br><span class="line">                if (!pi.CanWrite) continue;</span><br><span class="line">                object value = dr[tempName];</span><br><span class="line">                if (value != DBNull.Value)</span><br><span class="line">                    pi.SetValue(obj, value, null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        list.Add((T)obj);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static List&lt;T&gt; ConvertToList&lt;T&gt;(IDataReader reader)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;T&gt; list = new List&lt;T&gt;(); // 定义集合</span><br><span class="line">    Type type = typeof(T); // 获得此模型的类型</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    PropertyInfo[] propertys = type.GetProperties();// 获得此模型的公共属性</span><br><span class="line">    while (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        //新建一个模型</span><br><span class="line">        object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">        foreach (PropertyInfo pi in propertys)</span><br><span class="line">        &#123;</span><br><span class="line">            tempName = pi.Name;</span><br><span class="line">            if (ReaderExists(reader, tempName))</span><br><span class="line">            &#123;</span><br><span class="line">                if (!pi.CanWrite) continue;</span><br><span class="line">                object value = reader[tempName];</span><br><span class="line">                if (value != DBNull.Value)</span><br><span class="line">                    pi.SetValue(obj, value, null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        list.Add((T)obj);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static T ConvertToModel&lt;T&gt;(IDataReader reader)</span><br><span class="line">&#123;</span><br><span class="line">    Type type = typeof(T);</span><br><span class="line">    PropertyInfo[] proList = type.GetProperties();</span><br><span class="line">    //新建一个模型</span><br><span class="line">    object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    if (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        foreach (PropertyInfo pi in proList)</span><br><span class="line">        &#123;</span><br><span class="line">            tempName = pi.Name;</span><br><span class="line">            if (ReaderExists(reader, pi.Name))</span><br><span class="line">            &#123;</span><br><span class="line">                if (!pi.CanWrite) continue;</span><br><span class="line">                object value = reader[tempName];</span><br><span class="line">                if (value != DBNull.Value)</span><br><span class="line">                    pi.SetValue(obj, value, null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (T)obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static T ConvertToModel&lt;T&gt;(DataRow row)</span><br><span class="line">&#123;</span><br><span class="line">    Type type = typeof(T);</span><br><span class="line">    PropertyInfo[] proList = type.GetProperties();</span><br><span class="line">    //新建一个模型</span><br><span class="line">    object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    foreach (PropertyInfo pi in proList)</span><br><span class="line">    &#123;</span><br><span class="line">        tempName = pi.Name;</span><br><span class="line">        if (!string.IsNullOrEmpty(row[tempName].ToString()))</span><br><span class="line">        &#123;</span><br><span class="line">            if (!pi.CanWrite) continue;</span><br><span class="line">            object value = row[tempName];</span><br><span class="line">            if (value != DBNull.Value)</span><br><span class="line">                pi.SetValue(obj, value, null);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (T)obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 验证reader是否存在某列</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;param name=&quot;reader&quot;&gt;&lt;/param&gt;</span><br><span class="line">/// &lt;param name=&quot;columnName&quot;&gt;&lt;/param&gt;</span><br><span class="line">/// &lt;returns&gt;&lt;/returns&gt;</span><br><span class="line">private static bool ReaderExists(IDataReader reader, string columnName)</span><br><span class="line">&#123;</span><br><span class="line">    int count = reader.FieldCount;</span><br><span class="line">    for (int i = 0; i &lt; count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (reader.GetName(i).Equals(columnName))</span><br><span class="line">        &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C#</tag>
-        <tag>反射</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>对于异步的理解</title>
-    <url>/2018/04/16/%E5%AF%B9%E4%BA%8E%E5%BC%82%E6%AD%A5%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p><strong>对于异步的理解</strong></p>
-<p>  之前对于同步方法和使用async、await的异步方法很迷惑。我觉得等待执行结果的异步和同步方法有什么区别吗？他们的执行顺序都是一样的啊？不是都需要等待执行结果吗？  </p>
-<span id="more"></span>
-
-<p>  今天翻了一下《C#高级编程》，才算搞清楚这里面的差异，原来使用了async、await的异步是不会阻塞线程的。  </p>
-<p>  首先说说关于同步方法和异步方法的区别。比如说web网站加载一些网络资源，是使用同步方法请求，那么此时web网站的用户界面将会阻塞，直到该方法完成对资源的网络调用，并完成结果分析。完成这些调用所需的时间取决与网络速度，以及服务器当前的工作量。</p>
-<p>  对于用户来说，界面卡掉、一段时间的等待都是不愉快的。所以使用异步调用。</p>
-<p>  异步可以避免阻塞，在此期间可以做更多的事情。但是异步有一个缺陷，相对于同步来说，它对于程序的流程充满了不确定性，顺序可能会颠倒。所以在某些场景，比如说有多个异步方法被调用，他们是有依赖关系的，后面的异步方法需要使用到之前异步方法的结果，我们需要按顺序调用这些异步方法，这个时候就需要使用async、await关键字来等待执行的结果，但是它不会阻塞线程。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>异步</tag>
       </tags>
   </entry>
   <entry>
@@ -575,10 +482,46 @@
 <p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html">引用：依赖注入那些事</a></p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Technology</category>
       </categories>
       <tags>
-        <tag>设计原则</tag>
+        <tag>Design</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用反射把查询到的Table、Reader转换成List、Model</title>
+    <url>/2018/04/12/%E5%88%A9%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%8A%E6%9F%A5%E8%AF%A2%E5%88%B0%E7%9A%84Table%E3%80%81Reader%E8%BD%AC%E6%8D%A2%E6%88%90List%E3%80%81Model/</url>
+    <content><![CDATA[<p>纯粹写着玩，在不使用ORM工具的情况下通过反正转换类型。</p>
+<span id="more"></span>
+
+<p>通常我们从数据库查询到一个  DataReader  或者是  一个 Table , 想要转换成 一个 list 或者是<br>一个model 的话 , 一般情况下是使用foreach 循环reader或是table的rows，然后在循环内创建个对象，通过reader[“列名”]来赋值对象的属性。如果表的字段少的话，用这种方式还可以，速度也快一点。但是如果后续还会增加字段的话，那就非常麻烦了，要改很多地方。工作量太大，而且还很容易出错。所以这个时候使用反射来转换的话就非常便捷了。我们只管增加字段，改一下数据表对应的model，调用这个工具类的方法，传入相对应的参数就能得到想要的结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static List&lt;T&gt; ConvertToList&lt;T&gt;(DataTable dt)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;T&gt; list = new List&lt;T&gt;(); // 定义集合</span><br><span class="line">    Type type = typeof(T); // 获得此模型的类型</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    PropertyInfo[] propertys = type.GetProperties();// 获得此模型的公共属性</span><br><span class="line">    foreach (DataRow dr in dt.Rows)</span><br><span class="line">    &#123;</span><br><span class="line">        //新建一个模型</span><br><span class="line">        object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">        foreach (PropertyInfo pi in propertys)</span><br><span class="line">        &#123;</span><br><span class="line">            tempName = pi.Name;</span><br><span class="line">            if (dt.Columns.Contains(tempName))</span><br><span class="line">            &#123;</span><br><span class="line">                if (!pi.CanWrite) continue;</span><br><span class="line">                object value = dr[tempName];</span><br><span class="line">                if (value != DBNull.Value)</span><br><span class="line">                    pi.SetValue(obj, value, null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        list.Add((T)obj);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static List&lt;T&gt; ConvertToList&lt;T&gt;(IDataReader reader)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;T&gt; list = new List&lt;T&gt;(); // 定义集合</span><br><span class="line">    Type type = typeof(T); // 获得此模型的类型</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    PropertyInfo[] propertys = type.GetProperties();// 获得此模型的公共属性</span><br><span class="line">    while (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        //新建一个模型</span><br><span class="line">        object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">        foreach (PropertyInfo pi in propertys)</span><br><span class="line">        &#123;</span><br><span class="line">            tempName = pi.Name;</span><br><span class="line">            if (ReaderExists(reader, tempName))</span><br><span class="line">            &#123;</span><br><span class="line">                if (!pi.CanWrite) continue;</span><br><span class="line">                object value = reader[tempName];</span><br><span class="line">                if (value != DBNull.Value)</span><br><span class="line">                    pi.SetValue(obj, value, null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        list.Add((T)obj);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static T ConvertToModel&lt;T&gt;(IDataReader reader)</span><br><span class="line">&#123;</span><br><span class="line">    Type type = typeof(T);</span><br><span class="line">    PropertyInfo[] proList = type.GetProperties();</span><br><span class="line">    //新建一个模型</span><br><span class="line">    object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    if (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        foreach (PropertyInfo pi in proList)</span><br><span class="line">        &#123;</span><br><span class="line">            tempName = pi.Name;</span><br><span class="line">            if (ReaderExists(reader, pi.Name))</span><br><span class="line">            &#123;</span><br><span class="line">                if (!pi.CanWrite) continue;</span><br><span class="line">                object value = reader[tempName];</span><br><span class="line">                if (value != DBNull.Value)</span><br><span class="line">                    pi.SetValue(obj, value, null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (T)obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static T ConvertToModel&lt;T&gt;(DataRow row)</span><br><span class="line">&#123;</span><br><span class="line">    Type type = typeof(T);</span><br><span class="line">    PropertyInfo[] proList = type.GetProperties();</span><br><span class="line">    //新建一个模型</span><br><span class="line">    object obj = type.Assembly.CreateInstance(type.FullName);</span><br><span class="line">    string tempName = &quot;&quot;;</span><br><span class="line">    foreach (PropertyInfo pi in proList)</span><br><span class="line">    &#123;</span><br><span class="line">        tempName = pi.Name;</span><br><span class="line">        if (!string.IsNullOrEmpty(row[tempName].ToString()))</span><br><span class="line">        &#123;</span><br><span class="line">            if (!pi.CanWrite) continue;</span><br><span class="line">            object value = row[tempName];</span><br><span class="line">            if (value != DBNull.Value)</span><br><span class="line">                pi.SetValue(obj, value, null);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (T)obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 验证reader是否存在某列</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;param name=&quot;reader&quot;&gt;&lt;/param&gt;</span><br><span class="line">/// &lt;param name=&quot;columnName&quot;&gt;&lt;/param&gt;</span><br><span class="line">/// &lt;returns&gt;&lt;/returns&gt;</span><br><span class="line">private static bool ReaderExists(IDataReader reader, string columnName)</span><br><span class="line">&#123;</span><br><span class="line">    int count = reader.FieldCount;</span><br><span class="line">    for (int i = 0; i &lt; count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (reader.GetName(i).Equals(columnName))</span><br><span class="line">        &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>Reflex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对于异步的理解</title>
+    <url>/2018/04/16/%E5%AF%B9%E4%BA%8E%E5%BC%82%E6%AD%A5%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p><strong>对于异步的理解</strong></p>
+<p>  之前对于同步方法和使用async、await的异步方法很迷惑。我觉得等待执行结果的异步和同步方法有什么区别吗？他们的执行顺序都是一样的啊？不是都需要等待执行结果吗？  </p>
+<span id="more"></span>
+
+<p>  今天翻了一下《C#高级编程》，才算搞清楚这里面的差异，原来使用了async、await的异步是不会阻塞线程的。  </p>
+<p>  首先说说关于同步方法和异步方法的区别。比如说web网站加载一些网络资源，是使用同步方法请求，那么此时web网站的用户界面将会阻塞，直到该方法完成对资源的网络调用，并完成结果分析。完成这些调用所需的时间取决与网络速度，以及服务器当前的工作量。</p>
+<p>  对于用户来说，界面卡掉、一段时间的等待都是不愉快的。所以使用异步调用。</p>
+<p>  异步可以避免阻塞，在此期间可以做更多的事情。但是异步有一个缺陷，相对于同步来说，它对于程序的流程充满了不确定性，顺序可能会颠倒。所以在某些场景，比如说有多个异步方法被调用，他们是有依赖关系的，后面的异步方法需要使用到之前异步方法的结果，我们需要按顺序调用这些异步方法，这个时候就需要使用async、await关键字来等待执行的结果，但是它不会阻塞线程。</p>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>Async</tag>
       </tags>
   </entry>
   <entry>
@@ -622,10 +565,94 @@
 </code></pre>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>Technology</category>
       </categories>
       <tags>
-        <tag>设计模式</tag>
+        <tag>Desing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu部署netcore网站无法访问</title>
+    <url>/2020/03/15/Ubuntu%E9%83%A8%E7%BD%B2netcore%E7%BD%91%E7%AB%99%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</url>
+    <content><![CDATA[<p>记录一次发布.netcore网站到linux上的问题</p>
+<span id="more"></span>
+
+<p>前几天应工作需要，在阿里云上部署一个测试站点。本以为分分钟的事情，没想到打脸了。</p>
+<p>当时直接新建一个webapi项目，publish后直接上传到阿里云，随后设置nginx转发网站端口5000。</p>
+<p>接着打开网站测试访问，结果傻眼了，502…..。</p>
+<p>于是乎，使用dotnet命令行启动，指定端口8080，更改nginx配置转而监听8080。测试，又打不开。</p>
+<p>明明是按照众大神的文章一步一步来的，怎么会出错呢？搞不明白。随后老老实实阅读微软官方文档，</p>
+<p>终于发现问题所在。原来是我没有设置Kestrel的监听端口。</p>
+<p>论基础的重要性！！！要好好读书o(╥﹏╥)o，夯实基本功。</p>
+<p>经历说完了，接下来说说如何配置网站端口。</p>
+<p>设置的方式有三种：</p>
+<p><strong>第一种：Program类的CreateHostBuilder方法指定Urls</strong></p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseUrls(<span class="string">&quot;http://*:8080&quot;</span>);</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二种：使用配置文件Hosting.json</strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;urls&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://*:8080&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>项目需要添加引用</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.FileExtensions&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.Json&quot;</span>: <span class="string">&quot;1.0.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Program代码</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.SetBasePath(Directory.GetCurrentDirectory());</span><br><span class="line">                    configHost.AddJsonFile(<span class="string">&quot;hosting.json&quot;</span>, optional: <span class="literal">true</span>, reloadOnChange : <span class="literal">true</span>);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第三种：使用命令行配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet demo.dll --environment development --urls <span class="string">&quot;http://*:8081&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>项目需要添加引用</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.CommandLine&quot;</span>: <span class="string">&quot;3.1.2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Program代码</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.AddCommandLine(args);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注：三种方式可同时配置，但是具有优先级：UseUrls &lt; 文件配置 &lt; 命令行配置</p>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>.Netcore</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis工具类</title>
+    <url>/2018/04/12/Redis%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
+    <content><![CDATA[<p>redis工具类</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class RedisConnector</span><br><span class="line">&#123;</span><br><span class="line">    public class RedisParseResult&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public bool success;</span><br><span class="line">        public T value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static string ConnectionString &#123; get; set; &#125;</span><br><span class="line">    private static ConnectionMultiplexer RedisConnection &#123; get; set; &#125;</span><br><span class="line"></span><br><span class="line">    public RedisConnector(string redisConnectionString)</span><br><span class="line">    &#123;</span><br><span class="line">        ConnectionString = redisConnectionString;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            RedisConnection = ConnectionMultiplexer.Connect(ConnectionString);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RedisConnectionException e)</span><br><span class="line">        &#123;</span><br><span class="line">            AILogger.LogError(e.Message, $&quot;Redis server : &#123;redisConnectionString&#125;&quot;).Wait();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void Initialize(string redisConnectionString)</span><br><span class="line">    &#123;</span><br><span class="line">        ConnectionString = redisConnectionString;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            RedisConnection = ConnectionMultiplexer.Connect(ConnectionString);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RedisConnectionException e)</span><br><span class="line">        &#123;</span><br><span class="line">            AILogger.LogError(e.Message, $&quot;Redis server : &#123;redisConnectionString&#125;&quot;).Wait();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static IDatabase RedisStore =&gt; (null != RedisConnection) ? RedisConnection.GetDatabase() : ConnectionMultiplexer.Connect(ConnectionString).GetDatabase();</span><br><span class="line"></span><br><span class="line">    public static ConnectionMultiplexer Redis =&gt; RedisConnection ?? ConnectionMultiplexer.Connect(ConnectionString);</span><br><span class="line"></span><br><span class="line">    public async static Task&lt;bool&gt; Store(string key, string value, int expiry = 120, bool replace = false) =&gt; await RedisStore.StringSetAsync(key, value, TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);</span><br><span class="line"></span><br><span class="line">    public async static Task&lt;bool&gt; Store(string key, long value, int expiry = 120, bool replace = false) =&gt; await RedisStore.StringSetAsync(key, value.ToString(), TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);</span><br><span class="line"></span><br><span class="line">    public async static Task&lt;bool&gt; Store&lt;T&gt;(string key, T value, int expiry = 120, bool replace = false) =&gt; await RedisStore.StringSetAsync(key, JsonConvert.SerializeObject(value), TimeSpan.FromSeconds(expiry), replace ? When.Always : When.NotExists);</span><br><span class="line"></span><br><span class="line">    public static string Get(string key) =&gt; RedisStore.StringGet(key);</span><br><span class="line"></span><br><span class="line">    public static RedisParseResult&lt;T&gt; Get&lt;T&gt;(string key)</span><br><span class="line">    &#123;</span><br><span class="line">        var storedValue = RedisStore.StringGet(key);</span><br><span class="line">        if (string.IsNullOrEmpty(storedValue))</span><br><span class="line">            return new RedisParseResult&lt;T&gt; &#123; success = false &#125;;</span><br><span class="line">        else</span><br><span class="line">            return new RedisParseResult&lt;T&gt; &#123; success = true, value = JsonConvert.DeserializeObject&lt;T&gt;(storedValue) &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQLServer批量修改和插入</title>
+    <url>/2023/07/12/SQLServer%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E5%92%8C%E6%8F%92%E5%85%A5/</url>
+    <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>今天在工作中遇到这么一个场景，我需要根据条件对表A做批量更新或插入。因为条件比较复杂，所以我使用了临时表B，先把需要更新或插入的数据查询出来放入临时表。然后更新表A的某字段，更新条件是A.id &#x3D; B.id，更新效果是若记录存在表A中，则更新表A的字段，若不在表A中，则插入一条记录到表A。</p>
+<span id="more"></span>
+
+<h1 id="初始方案"><a href="#初始方案" class="headerlink" title="初始方案"></a>初始方案</h1><p>首先想到的是写两条SQL：</p>
+<ol>
+<li>update使用A.id in (select id from B)，这时会更新所有存在的记录的字段，不存在则不更新</li>
+<li>接下来再使用insert，条件是A.id not in (select id from B)，把A不存在未更新的数据插入到A</li>
+</ol>
+<p>两条SQL执行完，则完成了所有数据的更新和插入。</p>
+<h1 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h1><p>后面有朋友提示可以使用SQL Merge语句做这件事情，由于对数据库并不熟悉，所以不知道还有这么一个语法。我查阅了相关资料，发现Merge确实很合适这个场景。参考<a href="https://www.yiibai.com/sqlserver/sql-server-merge.html">SQL Server Merge语句 - SQL Server教程 (yiibai.com)</a>重构了代码</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> ... <span class="keyword">into</span> #B </span><br><span class="line">	<span class="keyword">from</span> A  <span class="keyword">where</span> ... </span><br><span class="line"></span><br><span class="line"><span class="keyword">merge</span> [A] a <span class="keyword">using</span> #B b  </span><br><span class="line">    <span class="keyword">on</span> a.id <span class="operator">=</span> b.id  </span><br><span class="line">    <span class="keyword">when</span> matched  </span><br><span class="line">	    <span class="keyword">then</span> <span class="keyword">update</span> <span class="keyword">set</span> a.field <span class="operator">=</span> <span class="number">1</span> </span><br><span class="line">    <span class="keyword">when</span> <span class="keyword">not</span> matched <span class="keyword">by</span> target  </span><br><span class="line">	    <span class="keyword">then</span> <span class="keyword">insert</span> (field)  </span><br><span class="line">		<span class="keyword">values</span> (b.id);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+        <tag>SQL Server</tag>
       </tags>
   </entry>
 </search>
