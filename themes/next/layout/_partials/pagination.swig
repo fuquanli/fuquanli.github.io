@@ -2,8 +2,8 @@
   <nav class="pagination">
     {{
       paginator({
-        prev_text: '上一页',
-        next_text: '下一页',
+        prev_text: 'Page Up',
+        next_text: 'Page Down',
         mid_size: 1
       })
     }}

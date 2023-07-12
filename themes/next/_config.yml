@@ -6,7 +6,7 @@
 # It's rebase to v6.0.0 and future maintenance will resume there
 # ===============================================================
 
-# ---------------------------------------------------------------ƒ
+# ---------------------------------------------------------------
 # Theme Core Configuration Settings
 # ---------------------------------------------------------------
 
@@ -45,7 +45,7 @@ rss:
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  since: 2018
+  #since: 2015
 
   # Icon between year and copyright info.
   icon: user
@@ -92,12 +92,12 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: /||home
-  tags: /tags/||tags
-  categories: /categories/||th
-  archives: /archives/||archive
-  about: /about/||user
-  #schedule: /schedule/ || calendar
+  home: /|| home
+  tags: /tags/|| tags
+  categories: /categories/|| th
+  archives: /archives/|| archive
+  about: /about/|| user
+  #schedule: /schedule/|| calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
 
@@ -111,8 +111,8 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-#scheme: Muse
-scheme: Mist
+scheme: Muse
+#scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
 
@@ -129,7 +129,6 @@ scheme: Mist
 social:
   GitHub: https://github.com/fuquanli || github
   E-Mail: mailto:fuquan.li@outlook.com || envelope
-  #WeiBo: https://weibo.com/leefuquan518 || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -232,7 +231,7 @@ post_meta:
 post_wordcount:
   item_text: true
   wordcount: true
-  min2read: true
+  min2read: false
   totalcount: false
   separated_meta: true
 
@@ -243,14 +242,14 @@ post_wordcount:
   #description: ex. subscribe to my blog by scanning my public wechat account
 
 # Reward
-#reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
-#wechatpay: /images/wechat_reward.jpg
-#alipay: /images/alipay_reward.jpg
+#reward_comment: Donate comment here
+#wechatpay: /images/wechatpay.jpg
+#alipay: /images/alipay.jpg
 #bitcoin: /images/bitcoin.png
 
 # Declare license on posts
 post_copyright:
-  enable: true
+  enable: false
   license: CC BY-NC-SA 3.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/3.0/
 
@@ -354,15 +353,15 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-baidu_analytics: cd05abe4954eac593da5d584b1d6cc4c
+#baidu_analytics:
 
 # Duoshuo ShortName
 #duoshuo_shortname:
 
 # Disqus
 disqus:
-  enable: true
-  shortname: fuquan
+  enable: false
+  shortname:
   count: true
 
 # Hypercomments
@@ -379,12 +378,12 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: true
-  appid:  alh3nnyoClegLzUt9LB7OB5y-gzGzoHsz
-  appkey:  Hq6lNxP3t2L9SQgyjr63y8LU
-  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  enable: false
+  appid:  # your leancloud application appid
+  appkey:  # your leancloud application appkey
+  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
-  placeholder: fuquan.li@Outlook.com # comment box placeholder
+  placeholder: Just go go # comment box placeholder
   avatar: mm # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
@@ -532,9 +531,9 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: true
-  app_id: alh3nnyoClegLzUt9LB7OB5y-gzGzoHsz
-  app_key: Hq6lNxP3t2L9SQgyjr63y8LU
+  enable: false
+  app_id: #<app_id>
+  app_key: #<app_key>
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
@@ -550,7 +549,7 @@ firestore:
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
   site_uv: true
   site_uv_header: <i class="fa fa-user"></i>
@@ -605,7 +604,7 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
-  enable: true
+  enable: false
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
@@ -676,7 +675,7 @@ motion:
 fancybox: true
 
 # Progress bar in the top during page loading.
-pace: true
+pace: false
 # Themes list:
 #pace-theme-big-counter
 #pace-theme-bounce
@@ -696,7 +695,7 @@ pace: true
 pace_theme: pace-theme-minimal
 
 # Canvas-nest
-canvas_nest: true
+canvas_nest: false
 
 # three_waves
 three_waves: false

@@ -12,7 +12,6 @@
   {% include '_third-party/analytics/index.swig' %}
 </head>
 
-
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
 
   {% set container_class = "container " %}
@@ -91,5 +90,3 @@
   {% include '_third-party/exturl.swig' %}
 </body>
 </html>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>
