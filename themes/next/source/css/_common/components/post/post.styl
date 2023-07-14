@@ -35,13 +35,18 @@
 
 .use-motion {
   if hexo-config('motion.transition.post_block') {
-    .post-block,
-    .pagination,
-    .comments { opacity: 0; }
+    .post-block{
+      opacity: 0;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      padding: 25px;
+      -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, 1);
+      -moz-box-shadow: 0 0 5px rgba(202, 203, 204, 1);
+    }    
+    .pagination, .comments {
+      opacity: 0;
+    }
   }
-  if hexo-config('motion.transition.post_header') { .post-header { opacity: 0; } }
-  if hexo-config('motion.transition.post_body') { .post-body { opacity: 0; } }
-  if hexo-config('motion.transition.coll_header') { .collection-title { opacity: 0; } }
 }
 
 @import "post-expand";
