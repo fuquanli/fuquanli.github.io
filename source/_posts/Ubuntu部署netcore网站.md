@@ -1,5 +1,6 @@
 ---
 title: Ubuntu部署netcore网站
+id: F044DDBABEAB96FC3FE6FFED7C2544BB
 date: 2020-03-15 16:13:30
 tags:
 - Ubuntu

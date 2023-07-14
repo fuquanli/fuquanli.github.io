@@ -1,5 +1,6 @@
 ---
 title: Zabbix部署和简单使用
+id: 0E89CB3527AD643BC4A75D445DE9F1D2
 date: 2020-04-11 20:20:00
 tags: O&M
 categories: Tool

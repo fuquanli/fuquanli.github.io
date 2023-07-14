@@ -1,5 +1,6 @@
 ---
 title: Ubuntu部署netcore网站无法访问
+id: 8081EB1E811675876C731BAF7B422099
 date: 2020-03-15 16:13:30
 tags:
 - Ubuntu

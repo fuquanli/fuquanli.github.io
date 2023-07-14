@@ -1,5 +1,6 @@
 ---
 title: linux常用命令
+id: 0FEB736DD08163CC1B6C2849A379B750
 date: 2018-04-12 10:58:20
 tags: Linux
 categories: System

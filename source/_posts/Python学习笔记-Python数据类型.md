@@ -1,5 +1,6 @@
 ---
 title: Python学习笔记-Python数据类型
+id: 75225689E99ECDA945680C6721B2CD28
 date: 2018-03-27 08:54:00
 tags: Python
 categories: Technology 

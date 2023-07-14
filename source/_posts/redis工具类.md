@@ -1,5 +1,6 @@
 ---
 title: Redis工具类
+id: D073ECB6924A39E46720C56440498BDF
 date: 2018-04-12 13:06:43
 tags: 
 - Redis

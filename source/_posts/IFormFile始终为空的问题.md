@@ -1,5 +1,6 @@
 ---
 title: IFormFile始终为空的问题
+id: BB529A094197215482DB7EF982E1C1AA
 date: 2019-11-04 22:26:45
 tags: .Netcore
 categories: Technology

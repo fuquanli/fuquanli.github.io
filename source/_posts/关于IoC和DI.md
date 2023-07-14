@@ -1,5 +1,6 @@
 ---
 title: 关于IoC和DI
+id: 58FD57A2835616B143E317EA49A22A80
 date: 2018-04-12 10:50:58
 tags: Design
 categories: Technology

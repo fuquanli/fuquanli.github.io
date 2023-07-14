@@ -1,5 +1,6 @@
 ---
 title: 利用反射把查询到的Table、Reader转换成List、Model
+id: 36319F63DF9B420D871A83484B2A40F2
 date: 2018-04-12 11:58:49
 tags: 
 - C#
