@@ -6,8 +6,8 @@
 title: 青梅煮酒
 subtitle: 结硬寨，打呆仗
 description: 三人行，必有我师焉，择其善者而从之，其不善者而改之。
-keywords: 李怀瑾,web开发者,博客,开发,编程
-author: 李怀瑾
+keywords: 李富泉,web开发者,博客,开发,编程
+author: 李富泉
 language: en
 timezone: Asia/Shanghai
 
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: hexo-theme-next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

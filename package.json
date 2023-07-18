@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.0.0-rc2"
   },
   "dependencies": {
-    "hexo": "^6.3.0",
+    "hexo": "^7.0.0-rc2",
+    "hexo-cli": "^4.3.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-deployer-heroku": "^0.1.2",
     "hexo-deployer-openshift": "^0.1.2",
@@ -23,7 +24,7 @@
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-renderer-swig": "^2.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-next": "^8.17.1",
+    "hexo-theme-next": "^5.1.4",
     "hexo-wordcount": "^6.0.1"
   }
 }
