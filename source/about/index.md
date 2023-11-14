@@ -6,7 +6,8 @@ comments: false
 ---
 
 # 个人简介
-  李怀瑾  
-  web开发者  
-  江西赣州人士，现居上海  
+  李富泉  
+
+  实事求是，理论联系实际，认真调查研究问题。
+  
   Email:fuquan.li@outlook.com  
