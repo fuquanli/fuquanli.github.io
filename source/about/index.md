@@ -4,7 +4,6 @@ date: 2018-04-09 17:01:34
 type: "about"
 comments: false
 ---
-# <center>个人简介<center>
 
 <b> <center>定风波·莫听穿林打叶声 </b>  
 莫听穿林打叶声，  
