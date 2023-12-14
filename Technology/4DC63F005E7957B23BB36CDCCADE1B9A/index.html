@@ -22,18 +22,28 @@
     var CONFIG = {"hostname":"fuquanli.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="实事求是。理论联系实际，认真调查研究问题。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="青梅煮酒">
-<meta property="og:url" content="https://fuquanli.cn/archives/2018/index.html">
+  <meta name="description" content="UML类图关系总结 各种关系的强弱顺序   泛化&#x3D; 实现&gt; 组合&gt; 聚合&gt; 关联&gt; 依赖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML类图关系总结">
+<meta property="og:url" content="https://fuquanli.cn/Technology/4DC63F005E7957B23BB36CDCCADE1B9A/index.html">
 <meta property="og:site_name" content="青梅煮酒">
-<meta property="og:description" content="实事求是。理论联系实际，认真调查研究问题。">
+<meta property="og:description" content="UML类图关系总结 各种关系的强弱顺序   泛化&#x3D; 实现&gt; 组合&gt; 聚合&gt; 关联&gt; 依赖">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyIjTU.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyIXwT.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyoSfJ.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyo9p9.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyIzY4.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyIxkF.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/12/04/piyIOmV.png">
+<meta property="article:published_time" content="2023-12-04T06:39:10.000Z">
+<meta property="article:modified_time" content="2023-12-04T07:01:59.372Z">
 <meta property="article:author" content="李怀瑾">
-<meta property="article:tag" content="李怀瑾,web开发者,博客,开发,编程">
+<meta property="article:tag" content="Tool">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/12/04/piyIjTU.png">
 
-<link rel="canonical" href="https://fuquanli.cn/archives/2018/">
+<link rel="canonical" href="https://fuquanli.cn/Technology/4DC63F005E7957B23BB36CDCCADE1B9A/">
 
 
 <script id="page-configurations">
@@ -41,12 +51,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | 青梅煮酒</title>
+  <title>UML类图关系总结 | 青梅煮酒</title>
   
 
 
@@ -191,230 +201,184 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 19 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fuquanli.cn/Technology/4DC63F005E7957B23BB36CDCCADE1B9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="李怀瑾">
+      <meta itemprop="description" content="实事求是。理论联系实际，认真调查研究问题。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青梅煮酒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UML类图关系总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-12-04 14:39:10" itemprop="dateCreated datePublished" datetime="2023-12-04T14:39:10+08:00">2023-12-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-09-03T08:54:00+08:00"
-              content="2018-09-03">
-          09-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/422886F81BCA6B29305410027114C835/" itemprop="url">
-            <span itemprop="name">JS设置localStorage有效期</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-09-03T08:54:00+08:00"
-              content="2018-09-03">
-          09-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Tool/E78756E315C538EE0A848E9B01C67DED/" itemprop="url">
-            <span itemprop="name">Webbench的使用</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-16T08:54:00+08:00"
-              content="2018-04-16">
-          04-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/6ECFDB54D0C1DDDD61E4FF75B038C197/" itemprop="url">
-            <span itemprop="name">对于异步的理解</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-12T13:06:43+08:00"
-              content="2018-04-12">
-          04-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/D073ECB6924A39E46720C56440498BDF/" itemprop="url">
-            <span itemprop="name">Redis工具类</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-12T11:58:49+08:00"
-              content="2018-04-12">
-          04-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/36319F63DF9B420D871A83484B2A40F2/" itemprop="url">
-            <span itemprop="name">利用反射把查询到的Table、Reader转换成List、Model</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-12T11:18:25+08:00"
-              content="2018-04-12">
-          04-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Tool/15E13FD7EF708DF71248E9C39381AD7A/" itemprop="url">
-            <span itemprop="name">上传本地项目到GitHub</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-12T10:58:20+08:00"
-              content="2018-04-12">
-          04-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/System/0FEB736DD08163CC1B6C2849A379B750/" itemprop="url">
-            <span itemprop="name">linux常用命令</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-12T10:50:58+08:00"
-              content="2018-04-12">
-          04-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/58FD57A2835616B143E317EA49A22A80/" itemprop="url">
-            <span itemprop="name">关于IoC和DI</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-04-12T10:46:02+08:00"
-              content="2018-04-12">
-          04-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/A6034B2DC7E6CD4E518DF46BF9A985D9/" itemprop="url">
-            <span itemprop="name">设计模式六大原则</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-03-27T08:54:00+08:00"
-              content="2018-03-27">
-          03-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/Technology/75225689E99ECDA945680C6721B2CD28/" itemprop="url">
-            <span itemprop="name">Python学习笔记-Python数据类型</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="UML类图关系总结"><a href="#UML类图关系总结" class="headerlink" title="UML类图关系总结"></a>UML类图关系总结</h1><ul>
+<li><p>各种关系的强弱顺序</p>
+<p>  泛化&#x3D; 实现&gt; 组合&gt; 聚合&gt; 关联&gt; 依赖</p>
+  <span id="more"></span>
+</li>
+<li><p>模型图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyIjTU.png" alt="piyIjTU.png"></p>
+</li>
+<li><p>泛化(继承)</p>
+<blockquote>
+<p>是一种继承关系,它指定了子类如何特化父类的所有特征和行为例如：老虎是动物的一种</p>
+</blockquote>
+<ul>
+<li><p>带三角箭头的实线，箭头指向父类</p>
+</li>
+<li><p>示例图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyIXwT.png" alt="piyIXwT.png"></p>
+</li>
+</ul>
+</li>
+<li><p>实现</p>
+<blockquote>
+<p>是一种类与接口的关系，表示类是接口所有特征和行为的实现</p>
+</blockquote>
+<ul>
+<li><p>带三角箭头的虚线，箭头指向接口</p>
+</li>
+<li><p>示例图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyoSfJ.png" alt="piyoSfJ.png"></p>
+</li>
+</ul>
+</li>
+<li><p>关联</p>
+<blockquote>
+<p>是一种拥有的关系,它使一个类知道另一个类的属性和方法；如：老师与学生，丈夫与妻子</p>
+</blockquote>
+<ul>
+<li><p>带普通箭头的实心线，指向被拥有者</p>
+</li>
+<li><p>代码体现：成员变量</p>
+</li>
+<li><p>示例图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyo9p9.png" alt="piyo9p9.png"></p>
+</li>
+</ul>
+</li>
+<li><p>聚合</p>
+<blockquote>
+<p>是整体与部分的关系.如车和轮胎是整体和部分的关系</p>
+</blockquote>
+<ul>
+<li><p>带空心菱形的实心线，菱形指向整体</p>
+</li>
+<li><p>代码体现：成员变量</p>
+</li>
+<li><p>示例图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyIzY4.png" alt="piyIzY4.png"></p>
+</li>
+</ul>
+</li>
+<li><p>组合</p>
+<blockquote>
+<p>是整体与部分的关系，没有公司就不存在部门。组合关系是关联关系的一种，是比聚合关系还要强的关系，它要求普通的聚合关系中代表整体的对象负责代表部分的对象的生命周期</p>
+</blockquote>
+<ul>
+<li><p>带实心菱形的实线，菱形指向整体</p>
+</li>
+<li><p>代码体现：成员变量</p>
+</li>
+<li><p>示例图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyIxkF.png" alt="piyIxkF.png"></p>
+</li>
+</ul>
+</li>
+<li><p>依赖</p>
+<blockquote>
+<p>是一种使用的关系,所以要尽量不使用双向的互相依赖。</p>
+</blockquote>
+<ul>
+<li><p>带箭头的虚线，指向被使用者</p>
+</li>
+<li><p>代码表现：局部变量、方法的参数或者对静态方法的调用</p>
+</li>
+<li><p>示例图</p>
+<p>  <img src="https://z1.ax1x.com/2023/12/04/piyIOmV.png" alt="piyIOmV.png"></p>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Tool/" rel="tag"><i class="fa fa-tag"></i> Tool</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Tool/0CF9422B6AC20812B87F821D0173EB34/" rel="prev" title="GIT常用命令">
+      <i class="fa fa-chevron-left"></i> GIT常用命令
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -467,6 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UML%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">UML类图关系总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

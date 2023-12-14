@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fuquanli.cn/Technology/4DC63F005E7957B23BB36CDCCADE1B9A/</loc>
+    
+    <lastmod>2023-12-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://fuquanli.cn/about/index.html</loc>
     
     <lastmod>2023-12-04</lastmod>
@@ -193,7 +202,7 @@
 
   <url>
     <loc>https://fuquanli.cn/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -201,126 +210,133 @@
   
   <url>
     <loc>https://fuquanli.cn/tags/Docker/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Git/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Netcore/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/js/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Linux/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Python/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/SQL/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/SQL-Server/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Ubuntu/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Test/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/O-M/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Redis/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/C/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/GitHub/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Design/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Reflex/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Async/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/tags/Desing/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fuquanli.cn/tags/Tool/</loc>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -329,21 +345,21 @@
   
   <url>
     <loc>https://fuquanli.cn/categories/Tool/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/categories/Technology/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://fuquanli.cn/categories/System/</loc>
-    <lastmod>2023-12-04</lastmod>
+    <lastmod>2023-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

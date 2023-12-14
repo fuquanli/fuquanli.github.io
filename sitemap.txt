@@ -1,3 +1,4 @@
+https://fuquanli.cn/Technology/4DC63F005E7957B23BB36CDCCADE1B9A/
 https://fuquanli.cn/about/index.html
 https://fuquanli.cn/tags/index.html
 https://fuquanli.cn/categories/index.html
@@ -38,6 +39,7 @@ https://fuquanli.cn/tags/Design/
 https://fuquanli.cn/tags/Reflex/
 https://fuquanli.cn/tags/Async/
 https://fuquanli.cn/tags/Desing/
+https://fuquanli.cn/tags/Tool/
 https://fuquanli.cn/categories/Tool/
 https://fuquanli.cn/categories/Technology/
 https://fuquanli.cn/categories/System/
