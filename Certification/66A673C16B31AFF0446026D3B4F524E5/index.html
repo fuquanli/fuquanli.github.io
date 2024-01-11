@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Blog.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Blog.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="EnOsXrbyhWDqLLa4Yz1DxNRCg0RsnXRFVVa8JuJRqYQ">
+  <meta name="msvalidate.01" content="FBFAE67AAC33916F6C9C15F7A9CE43D7">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fuquanli.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="软考学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件设计师-计算机组成与体系结构">
+<meta property="og:url" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/index.html">
+<meta property="og:site_name" content="青梅煮酒">
+<meta property="og:description" content="软考学习笔记">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%201.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%202.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%203.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%204.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%205.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%206.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%207.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%208.png">
+<meta property="og:image" content="https://fuquanli.cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/Untitled%209.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2010.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2011.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2012.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2013.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2014.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2015.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2016.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2017.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2018.png">
+<meta property="og:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled%2019.png">
+<meta property="article:published_time" content="2023-12-15T08:55:20.000Z">
+<meta property="article:modified_time" content="2023-12-26T06:30:43.777Z">
+<meta property="article:author" content="李怀瑾">
+<meta property="article:tag" content="Examinations">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/Untitled.png">
+
+<link rel="canonical" href="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>软件设计师-计算机组成与体系结构 | 青梅煮酒</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="青梅煮酒" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">青梅煮酒</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">实事求是</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/fuquanli" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fuquanli.cn/Certification/66A673C16B31AFF0446026D3B4F524E5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="李怀瑾">
+      <meta itemprop="description" content="实事求是。理论联系实际，认真调查研究问题。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青梅煮酒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件设计师-计算机组成与体系结构
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-12-15 16:55:20" itemprop="dateCreated datePublished" datetime="2023-12-15T16:55:20+08:00">2023-12-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Certification/" itemprop="url" rel="index"><span itemprop="name">Certification</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>软考学习笔记</p>
+<span id="more"></span>
+
+<h1 id="1-1-数据的表示"><a href="#1-1-数据的表示" class="headerlink" title="1.1 数据的表示"></a>1.1 数据的表示</h1><h2 id="1-1-1-进制的转换"><a href="#1-1-1-进制的转换" class="headerlink" title="1.1.1 进制的转换"></a>1.1.1 进制的转换</h2><ol>
+<li>R进制转十进制:将每位数字用R^k表示然后相加，k与该位小数点的距离有关，小数点左边第一位为0，右边第一位为-1，往左递增，往右递减，如二进制10100.01转十进制10100.01&#x3D;$1<em>2^4+1</em>2^2+1*2^{-2}$</li>
+<li>十进制转R进制: 整数位使用短除法，即将十进制数除以R再取余，直至余数为零商为1，然后将余数由下往上按顺序排列，小数位乘以R，每乘一次就取它的整数位（ 整数位为零时就取零)，直至小数位为零，然后将取得的整数位由上往下排列即可。如97转二进制</li>
+</ol>
+<img src="Untitled.png" width="20%" height="20%">
+    
+<ol start="3">
+<li>二进制转八进制及二进制转十六进制：将二进制数以小数点为界向左及向右每三个一组(转八进制),或者每四个一组(转十六进制)，缺的数用零来补充，然后依次转化为相应的进制数然后按顺序排列即可。</li>
+</ol>
+<img src="Untitled%201.png">
+
+<p>2进制转8进制</p>
+<img src="Untitled%202.png">
+
+<p>二进制转16进制</p>
+<h2 id="1-1-2-原码反码补码移码"><a href="#1-1-2-原码反码补码移码" class="headerlink" title="1.1.2 原码反码补码移码"></a>1.1.2 原码反码补码移码</h2><ol>
+<li>原码：将一个10进制转换为2进制数，二进制首位表示正负，0正1负，不足8位在首位和2进制数中间补0，如-1的原码为10000001</li>
+<li>反码：原码在计算机中加减不能得到正确答案，反码的加减符合事实。正数的反码为它本身，而负数的反码为除了首位不变其余全部取反。0变1，1变0。</li>
+<li>补码：正数的补码与原码相同，负数的补码即为其反码加一(补码的运算也符合正确答案)</li>
+<li>移码：将正数和负数的补码首位取反，其余位不改变（移码的运算也符合正确答案)</li>
+<li>数值表示范围，N&#x3D;8（1Byte &#x3D; 8bit）</li>
+</ol>
+<img src="Untitled%203.png">
+
+<h2 id="1-1-3-浮点数的运算"><a href="#1-1-3-浮点数的运算" class="headerlink" title="1.1.3 浮点数的运算"></a>1.1.3 浮点数的运算</h2><ol>
+<li>概念：浮点数就是科学计算法，即1000&#x3D;1x10³，1是尾数，10是基数，³是指数</li>
+<li>运算：当指数不等时，低阶转高阶，尾数相加后格式化（例如：1.0x10³+1.19x10² &#x3D; 1.0x10³+0.119x10³ &#x3D; 1.119x10³，格式化指尾数的整数必须是个位数，10.19x10² &#x3D;&gt; 1.019x10³）</li>
+</ol>
+<h1 id="1-2-计算机结构"><a href="#1-2-计算机结构" class="headerlink" title="1.2 计算机结构"></a>1.2 计算机结构</h1><p><em>中央处理器CPU由运算器和控制器构成</em></p>
+<h2 id="1-2-1-运算器"><a href="#1-2-1-运算器" class="headerlink" title="1.2.1 运算器"></a>1.2.1 运算器</h2><ol>
+<li>算术逻辑单元(ALU)：数据的算数运算和逻辑运算</li>
+<li>累加寄存器(AC)：通用寄存器，为ALU提供工作区域，如存储暂存数据（2+4+6）</li>
+<li>数据缓冲寄存器(DR)：读内存时的暂存数据</li>
+<li>状态条件寄存器(PSW)：运算过程中标志位（运算溢出、中断，状态的保存）</li>
+</ol>
+<h2 id="1-2-2-控制器"><a href="#1-2-2-控制器" class="headerlink" title="1.2.2 控制器"></a>1.2.2 控制器</h2><ol>
+<li>程序计数器(PC)：存放下一条指令的地址，通常是顺序执行(+1)</li>
+<li>指令寄存器(IR)：存放即将执行的指令</li>
+<li>指令译码器(ID)：指令分操作码和地址码，译码器用于分析操作码，告诉CPU需要怎么做</li>
+<li>时序部件</li>
+</ol>
+<h1 id="1-3-Flynn分类法"><a href="#1-3-Flynn分类法" class="headerlink" title="1.3 Flynn分类法"></a>1.3 Flynn分类法</h1><img src="Untitled%204.png">
+
+<h1 id="1-4-CISC与RISC"><a href="#1-4-CISC与RISC" class="headerlink" title="1.4 CISC与RISC"></a>1.4 CISC与RISC</h1><img src="Untitled%205.png">
+
+<h1 id="1-5-流水线技术"><a href="#1-5-流水线技术" class="headerlink" title="1.5 流水线技术"></a>1.5 流水线技术</h1><ol>
+<li>指令执行流程：取指-&gt;分析-&gt;执行</li>
+<li>流水线概念：流水线是指在程序执行时多条指令重叠进行操作的一种准并行处理实现技术。各种部件同时处理是针对不同指令而言的，他们可以同时为多条指令的不同部分进行工作，以提高各部分的利用率和指令的平均执行速度</li>
+<li>流水线周期计算：流水线周期为执行时间最长的一段</li>
+<li>流水线执行时间计算：<ol>
+<li>*<em>理论公式(考试优先)：1条指令完整执行时间+(指令条数-1)<em>流水线周期</em></em></li>
+<li>实际公式：(1条完整指令的步骤数+指令条数-1)*流水线周期</li>
+</ol>
+</li>
+<li>流水线吞吐率<ol>
+<li>概念：指在单位时间内流水线所完成的任务数量或结果数量</li>
+<li>公式：TP&#x3D;指令条数&#x2F;流水线执行时间</li>
+<li>最大吞吐率公式：1&#x2F;周期</li>
+</ol>
+</li>
+<li>流水线加速比<ol>
+<li>概念：完成同样一批任务，不使用流水线技术和使用流水线技术所用的时间之比</li>
+<li>公式：不使用流水线的执行时间&#x2F;使用流水线的执行时间</li>
+</ol>
+</li>
+<li>流水线的效率<ol>
+<li><p>概念：流水线的设备利用率</p>
+</li>
+<li><p>公式：E&#x3D;n个任务占用的时空区&#x2F;k个流水段总的时空区&#x3D;T0&#x2F;KTk</p>
+ <img src="Untitled%206.png"></li>
+</ol>
+</li>
+</ol>
+<h1 id="1-6-层次化存储结构"><a href="#1-6-层次化存储结构" class="headerlink" title="1.6 层次化存储结构"></a>1.6 层次化存储结构</h1><img src="Untitled%207.png">
+
+<p>内存存储外存的部分内容，Cache存储内存的部分内容。Cache提高CPU的执行效率</p>
+<h1 id="1-7-Cache"><a href="#1-7-Cache" class="headerlink" title="1.7 Cache"></a>1.7 Cache</h1><ol>
+<li>功能：提高CPU输入输出的速率，突破冯诺依曼瓶颈，即CPU与存储器系统间数据传送带宽限制，在程序执行过程中，Cache与主存的地址映射是由硬件自动完成的。在计算机的存储体系中，Cache是访问速度最快的层次。使用Cache改善系统的依据是程序的局部性原理。</li>
+<li>Cache+主存储器的系统平均周期计算：如果以h代表对cache的访问命中率，t1表示cache的周期时间，t2表示主存储器周期时间，以读操作为例，使用“chche+主存储器”的系统的平均周期为t3，则：t3&#x3D;h*t1+(1-h)*t2；其中，(1-h)又称为失效率(未命中率)<br>注：CPU会在cache中寻找它需要的数据，如果不能找到，CPU就将前往内存中寻找，而chche的访问命中率就是CPU需要的数据在cache中被找到的比例，未能找到的数据CPU将前往内存中进行再次寻找</li>
+<li>内存与cache地址映射的三种方式：分别是直接映像(cache的区号与内存的区号一一对应)、全相连映像(cache的一个块号可以对应多个内存的块号，内存的一个块号也可以对应cache的多个块号)，组相连映像(即两种方式相结合的方法)；<br>注：这三种映射方式都是计算机硬件自动完成的，不是软件</li>
+<li>替换算法：替换算法的目的是使cache获得尽可能高的命中率，有以下四种：随机替换算法、先进先出算法、近期最少使用算法、优化替换算法<br>注：现代的计算机cache系统是分为了三个级别的，访问时先从第一层开始访问，直至三个级别的cache都被访问完全时才会访问内存</li>
+<li>虚拟存储器：即cpu在给出需要访问的内存地址时，给出的并不是真正的物理地址，而是物理地址的抽象，虚拟存储器是由主存-辅存两级存储器组成</li>
+</ol>
+<h1 id="1-8-主存"><a href="#1-8-主存" class="headerlink" title="1.8 主存"></a>1.8 主存</h1><h2 id="1-8-1-主存的分类"><a href="#1-8-1-主存的分类" class="headerlink" title="1.8.1 主存的分类"></a>1.8.1 主存的分类</h2><ol>
+<li>随机存储存储器(RAM)：断电后清除所有数据，有两类RAM：静态(SRAM)和动态(DRAM)，SRAM速度更快价格高，SRAM用来作为高速缓冲存储器(Cache)，DRAM用来作为主存及图形系统的帧缓冲区。SRAM将每个位存储在一个双隐态的存储器单元中，DRAM将每个位存储为对一个电容的充电，由于电容非常小，在10~100ms时间内会失去电荷，所以需要周期性地刷新充电以保持信息</li>
+<li>只读存储器(ROM)：断电后仍然能够存储信息</li>
+</ol>
+<h2 id="1-8-2-主存的编址"><a href="#1-8-2-主存的编址" class="headerlink" title="1.8.2 主存的编址"></a>1.8.2 主存的编址</h2><ol>
+<li>概念：主存的编址就是把许多块芯片组成相应的存储器</li>
+</ol>
+<img src="Untitled%208.png">
+
+<p>一般表示方式如上图，其中左图一中的8表示它有8个地址空间，4表示每一个地址空间存储了4位的信息，而两个图一则可以拼接为图二，也可以拼接为图三</p>
+<ol>
+<li>编址相关计算</li>
+</ol>
+<p><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/Untitled%209.png" alt="其中H表示十六进制，存储单元数量等于大的内存地址减去小的内存地址再加上一；K=1024，第一个空即为存储单元数量除以1024；(C7FFF-AC000+1)/1024 = 112K 个地址单元。
+$[\frac{112K*16}{28*16K*X}]=1$；X = 4 , 该芯片每个存储单元存储4位。"></p>
+<p>其中H表示十六进制，存储单元数量等于大的内存地址减去小的内存地址再加上一；K&#x3D;1024，第一个空即为存储单元数量除以1024；(C7FFF-AC000+1)&#x2F;1024 &#x3D; 112K 个地址单元。<br>$[\frac{112K<em>16}{28</em>16K*X}]&#x3D;1$；X &#x3D; 4 , 该芯片每个存储单元存储4位。</p>
+<h1 id="1-9-磁盘结构和参数"><a href="#1-9-磁盘结构和参数" class="headerlink" title="1.9 磁盘结构和参数"></a>1.9 磁盘结构和参数</h1><p>磁头必须依次读取扇区(物理块)，每次读取都会放入缓存区，缓存区可以是单个或多个，存放完会在缓存区进行处理，处理期间磁头的读取不会停止。<br>磁盘调度管理中，先进行移臂调度寻找磁道，再进行旋转调度寻找扇区。</p>
+<img src="Untitled%2010.png">
+
+<h1 id="1-10-总线"><a href="#1-10-总线" class="headerlink" title="1.10 总线"></a>1.10 总线</h1><p><em>总线是连接计算机有关部件的一组信号线，是计算机中用来传递信息代码的公共通道</em></p>
+<ol>
+<li>内部总线：微机内部的，各个外围芯片与处理器之间的总线，属于芯片级别</li>
+<li>系统总线：各个插线板和系统板之间的总线<ol>
+<li>数据总线：32位&#x2F;64位等一次性能够传输的位</li>
+<li>地址总线：假设计算机的地址总线为32位，那就代表它的地址空间为232个字节</li>
+<li>控制总线：发送相应的控制信息的总线</li>
+</ol>
+</li>
+<li>外部总线：微机和外部设备的总线</li>
+</ol>
+<p>总线上的多个部件之间只能分时向总线发送数据，但可以同时从总线接收数据</p>
+<h1 id="1-11-系统可靠性分析与设计"><a href="#1-11-系统可靠性分析与设计" class="headerlink" title="1.11 系统可靠性分析与设计"></a>1.11 系统可靠性分析与设计</h1><h2 id="1-11-1-串联系统"><a href="#1-11-1-串联系统" class="headerlink" title="1.11.1 串联系统"></a>1.11.1 串联系统</h2><p><em>其中一个子系统失效，整个系统都失效（类似串联电路）</em></p>
+<img src="Untitled%2011.png">
+
+<p>串联系统可靠性计算：各子系统可靠性相乘，如上图R为子系统可靠性，1-可靠性是失效率，总失效率为各子系统的失效率之和。</p>
+<h2 id="1-11-2-并联系统"><a href="#1-11-2-并联系统" class="headerlink" title="1.11.2 并联系统"></a>1.11.2 并联系统</h2><p><em>少数子系统的失效不会影响整个系统（类似并联电路）</em></p>
+<img src="Untitled%2012.png">
+
+<p>并联系统可靠性计算：通过计算失效率来计算可靠性，既各子系统的失效率相乘，再由1减去它，得到的结果就是并联系统可靠性</p>
+<h2 id="1-11-3-模冗余系统"><a href="#1-11-3-模冗余系统" class="headerlink" title="1.11.3 模冗余系统"></a>1.11.3 模冗余系统</h2><p><em>数据输入n个子系统中，它们各自得出自己的结果，然后汇总到表决器，表决器将遵循少数服从多数的原则，输出大多数子系统得到的那个答案然后进行输出</em></p>
+<img src="Untitled%2013.png">
+
+<h2 id="1-11-4-混合系统可靠度计算"><a href="#1-11-4-混合系统可靠度计算" class="headerlink" title="1.11.4 混合系统可靠度计算"></a>1.11.4 混合系统可靠度计算</h2><img src="Untitled%2014.png">
+
+<h1 id="1-12-差错控制-CRC与海明校验码"><a href="#1-12-差错控制-CRC与海明校验码" class="headerlink" title="1.12 差错控制-CRC与海明校验码"></a>1.12 差错控制-CRC与海明校验码</h1><h2 id="1-12-1-码距及其作用"><a href="#1-12-1-码距及其作用" class="headerlink" title="1.12.1 码距及其作用"></a>1.12.1 码距及其作用</h2><p><em>指整个编码系统中任意两个码字的最小距离,如A变化X个位得到B，则X就为码距</em></p>
+<img src="Untitled%2015.png">
+
+<p>作用：增大码距能起到检错的作用，因为数据在传输的过程中如果链路出现了问题，那么将会使得接收到的二进制数发生变化，若码距过小，则很可能造成信息的混淆，增大码距就使得被改变的二进制数混淆信息的概率极大的降低;若码距再进行增大，则能够起到纠错的作用，因为数据链路出错的概率比较低，只能造成传输中极少二进制数的改变，我们可以根据该传输失真的二进制数中大部分二进制数的构成来进行推断，推断出结果就达到了纠错的目的。<br>注：在一个码组内为了检测e个误码，要求最小码距d应满足：d≥e+1<br>在一个码组内为了纠正t个误码，要求最小码距t应满足：t≥2t+1</p>
+<h2 id="1-12-2-循环冗余校验码-CRC："><a href="#1-12-2-循环冗余校验码-CRC：" class="headerlink" title="1.12.2 循环冗余校验码-CRC："></a>1.12.2 循环冗余校验码-CRC：</h2><p>一种可以检错不可纠错的编码<br>概念：在对信息进行编码的时候在其尾部加入一些校验信息，让编码后的数据能够与循环校验码的生成多项式相除余数为零，若不为零则说明传输过程出现了错误.(模2除法，使用异或)</p>
+<img src="Untitled%2016.png">
+
+<h2 id="1-12-3-校验码-海明校验码"><a href="#1-12-3-校验码-海明校验码" class="headerlink" title="1.12.3 校验码-海明校验码"></a>1.12.3 校验码-海明校验码</h2><p>利用多组数位的奇偶性来检错和纠错</p>
+<ol>
+<li>确认校验码位数：2^r&gt;&#x3D;k+r+1(k:信息数位数，r:校验码位数)</li>
+<li>确认校验码位置：2^n</li>
+<li>求出校验码：下面例图</li>
+</ol>
+<img src="Untitled%2017.png">
+    
+<ol start="4">
+<li>校验码纠正：按上面步骤重新计算校验码并与收到的校验码进行异或运算；</li>
+</ol>
+<p>出现1的位置为校验码错误位；</p>
+<img src="Untitled%2018.png">
+
+<h2 id="1-12-4-校验码-奇偶校验码"><a href="#1-12-4-校验码-奇偶校验码" class="headerlink" title="1.12.4 校验码-奇偶校验码"></a>1.12.4 校验码-奇偶校验码</h2><img src="Untitled%2019.png">
+
+<p>在编码中增加1位校验位来使编码中1的个数为奇数 (奇校验)或者偶数(偶校验)，从而使码距变为2</p>
+<p>奇校验：编码中有奇数个1，发送给接收方，接收方收到后，会计算收到的编码有多少个1，如果是奇数个，则无误，是偶数个，则有误<br>偶校验：编码中有偶数个1<br>奇偶校验：只能检测1位错，无法检查出偶数个错误，并且无法纠错<br>假设计算机规定好的是奇校验，发送方发送的编码是01101 0，而接收方收到的是11111 0，但是奇数个1，符合奇校验，但有两个0变成了1，所以奇偶校验只能检测出1位错误，且没法纠错。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Examinations/" rel="tag"><i class="fa fa-tag"></i> Examinations</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Technology/4DC63F005E7957B23BB36CDCCADE1B9A/" rel="prev" title="UML类图关系总结">
+      <i class="fa fa-chevron-left"></i> UML类图关系总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">1.1 数据的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-1-%E8%BF%9B%E5%88%B6%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.1 进制的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-2-%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%A7%BB%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">1.1.2 原码反码补码移码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-3-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.</span> <span class="nav-text">1.1.3 浮点数的运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">1.2 计算机结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-1-%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">1.2.1 运算器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-2-%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.2 控制器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-3-Flynn%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">1.3 Flynn分类法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-4-CISC%E4%B8%8ERISC"><span class="nav-number">4.</span> <span class="nav-text">1.4 CISC与RISC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-5-%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%8A%80%E6%9C%AF"><span class="nav-number">5.</span> <span class="nav-text">1.5 流水线技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-6-%E5%B1%82%E6%AC%A1%E5%8C%96%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">1.6 层次化存储结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-7-Cache"><span class="nav-number">7.</span> <span class="nav-text">1.7 Cache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-8-%E4%B8%BB%E5%AD%98"><span class="nav-number">8.</span> <span class="nav-text">1.8 主存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-1-%E4%B8%BB%E5%AD%98%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">8.1.</span> <span class="nav-text">1.8.1 主存的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-2-%E4%B8%BB%E5%AD%98%E7%9A%84%E7%BC%96%E5%9D%80"><span class="nav-number">8.2.</span> <span class="nav-text">1.8.2 主存的编址</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-9-%E7%A3%81%E7%9B%98%E7%BB%93%E6%9E%84%E5%92%8C%E5%8F%82%E6%95%B0"><span class="nav-number">9.</span> <span class="nav-text">1.9 磁盘结构和参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-10-%E6%80%BB%E7%BA%BF"><span class="nav-number">10.</span> <span class="nav-text">1.10 总线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-11-%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.</span> <span class="nav-text">1.11 系统可靠性分析与设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-11-1-%E4%B8%B2%E8%81%94%E7%B3%BB%E7%BB%9F"><span class="nav-number">11.1.</span> <span class="nav-text">1.11.1 串联系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-11-2-%E5%B9%B6%E8%81%94%E7%B3%BB%E7%BB%9F"><span class="nav-number">11.2.</span> <span class="nav-text">1.11.2 并联系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-11-3-%E6%A8%A1%E5%86%97%E4%BD%99%E7%B3%BB%E7%BB%9F"><span class="nav-number">11.3.</span> <span class="nav-text">1.11.3 模冗余系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-11-4-%E6%B7%B7%E5%90%88%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">11.4.</span> <span class="nav-text">1.11.4 混合系统可靠度计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-12-%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6-CRC%E4%B8%8E%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">12.</span> <span class="nav-text">1.12 差错控制-CRC与海明校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-12-1-%E7%A0%81%E8%B7%9D%E5%8F%8A%E5%85%B6%E4%BD%9C%E7%94%A8"><span class="nav-number">12.1.</span> <span class="nav-text">1.12.1 码距及其作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-12-2-%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81-CRC%EF%BC%9A"><span class="nav-number">12.2.</span> <span class="nav-text">1.12.2 循环冗余校验码-CRC：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-12-3-%E6%A0%A1%E9%AA%8C%E7%A0%81-%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">12.3.</span> <span class="nav-text">1.12.3 校验码-海明校验码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-12-4-%E6%A0%A1%E9%AA%8C%E7%A0%81-%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">12.4.</span> <span class="nav-text">1.12.4 校验码-奇偶校验码</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="李怀瑾"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">李怀瑾</p>
+  <div class="site-description" itemprop="description">实事求是。理论联系实际，认真调查研究问题。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fuquanli" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fuquanli" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:fuquan.li@outlook.com" title="E-Mail → mailto:fuquan.li@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李怀瑾</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
