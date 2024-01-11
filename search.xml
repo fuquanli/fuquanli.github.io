@@ -19,6 +19,48 @@
       </tags>
   </entry>
   <entry>
+    <title>IFormFile始终为空的问题</title>
+    <url>/Technology/BB529A094197215482DB7EF982E1C1AA/</url>
+    <content><![CDATA[<p>  之前获取上传文件都是使用Request.Form.Files获取，直到这次<br>  改成定义形参 IFormFile时才遇到这个问题。  </p>
+<span id="more"></span>
+
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// POST api/values</span></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Post</span>(<span class="params">[FromForm] IFormFile file</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">　　<span class="keyword">var</span> files = Request.Form.Files;</span><br><span class="line">　　<span class="comment">//file == null</span></span><br><span class="line">　　<span class="comment">//files != null;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  不知道这是不是微软的一个BUG？  </p>
+<p>  解决方案有两种：</p>
+<p>  方案一：去除[ApiController]这个Attribute</p>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">Route(<span class="string">&quot;api/[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="comment">//[ApiController]</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ValuesController</span> : <span class="title">ControllerBase</span> </span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 方案二：在[FromForm]里添加Name属性:[FromForm(name &#x3D; “file”)]，这个属性需跟file参数保持一致</p>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// POST api/values</span></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Post</span>(<span class="params">[FromForm(Name = <span class="string">&quot;file&quot;</span></span>)] IFormFile file)</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方案出自：<a href="https://stackoverflow.com/questions/52294830/iformfile-is-always-null-when-receiving-file-from-console-app">IFormFile is always null when receiving file from console app</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>.Netcore</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS设置localStorage有效期</title>
+    <url>/Technology/422886F81BCA6B29305410027114C835/</url>
+    <content><![CDATA[<p>  localStorage是一个没有时间限制的数据存储，如果没有手动删除它，它将永久保存。但是有些时候我们又需要它在一段时间后自动删除，这里我们可以对它进行扩展。</p>
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"><span class="comment">//设置localStorage的值</span></span><br><span class="line">foowwLocalStorage.<span class="title function_">set</span>(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;你好&quot;</span>, date + <span class="number">10000</span>);</span><br><span class="line"><span class="comment">//获取localStorage的值</span></span><br><span class="line"><span class="keyword">var</span> data = foowwLocalStorage.<span class="title function_">get</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foowwLocalStorage = &#123;</span><br><span class="line">    <span class="attr">set</span>: <span class="keyword">function</span> (<span class="params">key, value, ttl_ms</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = &#123; <span class="attr">value</span>: value, <span class="attr">expirse</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(ttl_ms).<span class="title function_">getTime</span>() &#125;;</span><br><span class="line">        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(key, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data));</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(key));</span><br><span class="line">        <span class="keyword">if</span> (data !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">debugger</span></span><br><span class="line">            <span class="keyword">if</span> (data.<span class="property">expirse</span> != <span class="literal">null</span> &amp;&amp; data.<span class="property">expirse</span> &lt; <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()) &#123;</span><br><span class="line">                <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> data.<span class="property">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker配置加速器</title>
     <url>/Tool/F760900045026185F494BB3439D0DC49/</url>
     <content><![CDATA[<p>有时使用Docker拉取镜像慢如蜗牛，这个时候就需要配置下加速器，Docker 官方和国内很多云服务商都提供了国内加速器服务。</p>
@@ -48,122 +90,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS设置localStorage有效期</title>
-    <url>/Technology/422886F81BCA6B29305410027114C835/</url>
-    <content><![CDATA[<p>  localStorage是一个没有时间限制的数据存储，如果没有手动删除它，它将永久保存。但是有些时候我们又需要它在一段时间后自动删除，这里我们可以对它进行扩展。</p>
-<span id="more"></span>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"><span class="comment">//设置localStorage的值</span></span><br><span class="line">foowwLocalStorage.<span class="title function_">set</span>(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;你好&quot;</span>, date + <span class="number">10000</span>);</span><br><span class="line"><span class="comment">//获取localStorage的值</span></span><br><span class="line"><span class="keyword">var</span> data = foowwLocalStorage.<span class="title function_">get</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foowwLocalStorage = &#123;</span><br><span class="line">    <span class="attr">set</span>: <span class="keyword">function</span> (<span class="params">key, value, ttl_ms</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = &#123; <span class="attr">value</span>: value, <span class="attr">expirse</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(ttl_ms).<span class="title function_">getTime</span>() &#125;;</span><br><span class="line">        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(key, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data));</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(key));</span><br><span class="line">        <span class="keyword">if</span> (data !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">debugger</span></span><br><span class="line">            <span class="keyword">if</span> (data.<span class="property">expirse</span> != <span class="literal">null</span> &amp;&amp; data.<span class="property">expirse</span> &lt; <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()) &#123;</span><br><span class="line">                <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> data.<span class="property">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python学习笔记-Python数据类型</title>
-    <url>/Technology/75225689E99ECDA945680C6721B2CD28/</url>
-    <content><![CDATA[<h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>  字符串格式化: 用 % 实现<br>  可使用 isinstance(x, str) 判断变量x是否是字符串  </p>
-<span id="more"></span>
-
-  <figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">  &gt;&gt;&gt; <span class="string">&#x27;Hello , %s&#x27;</span> <span class="meta">%</span> <span class="string">&#x27;world&#x27;</span></span><br><span class="line"><span class="string">&#x27;Hello , world&#x27;</span></span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;Hi , %s , you have $%d.&#x27;</span> <span class="meta">%</span> <span class="comment">(&#x27;Michael&#x27; , 1000000)</span></span><br><span class="line"><span class="string">&#x27;Hi , Michael , you have $1000000.&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>占位符</th>
-<th>替换内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%d</td>
-<td>整数</td>
-</tr>
-<tr>
-<td>%f</td>
-<td>浮点数</td>
-</tr>
-<tr>
-<td>%s</td>
-<td>字符串</td>
-</tr>
-<tr>
-<td>%x</td>
-<td>十六进制整数</td>
-</tr>
-</tbody></table>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>  有序集合，可随时添加和删除其中的元素。<br>  有两个特点：  </p>
-<ul>
-<li>查找和插入的时间随着元素的增加而增加</li>
-<li>占用空间小，浪费内存少<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; classmates = [<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt; classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br></pre></td></tr></table></figure>
-使用 len() 函数获取长度，最后一位元素是 len(classmates) -1<br>追加元素使用 append() ，插入元素使用 insert()，删除末尾使用 pop()，删除指定 pop(1)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.append(<span class="string">&#x27;Adam&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>, <span class="string">&#x27;Adam&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.insert(<span class="number">1</span>, <span class="string">&#x27;Jack&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>, <span class="string">&#x27;Adam&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop()</span><br><span class="line"><span class="string">&#x27;Adam&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop()</span><br><span class="line"><span class="string">&#x27;Adam&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h3><p>有序列表元组，与list类似，但初始化后不能修改</p>
-<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">classmates = (<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>)</span></span><br></pre></td></tr></table></figure>
-<p>如果只有一个元素，需要加上一个逗号避免歧义</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="literal">t</span> = (<span class="number">1</span>,)</span><br><span class="line">&gt;&gt;&gt; <span class="literal">t</span></span><br><span class="line">(<span class="number">1</span>,)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h3><p>字典，全称dictionary，使用键值对(key , value)存储</p>
-<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d = &#123;<span class="string">&#x27;Michael&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;Bob&#x27;</span>: <span class="number">75</span>, <span class="string">&#x27;Tracy&#x27;</span>: <span class="number">85</span>&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d[<span class="string">&#x27;Michael&#x27;</span>]</span></span><br><span class="line">95</span><br></pre></td></tr></table></figure>
-
-<p>使用 in 判断 key 是否存在</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Thomas&#x27;</span> <span class="keyword">in</span> d</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<p>使用 get() ，如果 key 不存在，可以返回 None，或者指定的value</p>
-<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d.get(<span class="string">&#x27;Thomas&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d.get(<span class="string">&#x27;Thomas&#x27;</span>, -<span class="number">1</span>)</span></span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
-
-<p>删除一个 key ，对应的 value 也会删除，使用 pop(key) </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="string">&#x27;Bob&#x27;</span>)</span><br><span class="line"><span class="number">75</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">&#x27;Michael&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;Tracy&#x27;</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>和List相比，有两个特点:</p>
-<ul>
-<li>查找和插入速度快，不会随着key的增加而变慢</li>
-<li>需要占用大量内存，浪费内存多</li>
-</ul>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>与 dict 类似，但仅存储 key，不存储value，且key不可以重复</p>
-<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s = <span class="built_in">set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s</span></span><br><span class="line">&#123;1, 2, 3&#125;</span><br></pre></td></tr></table></figure>
-<p>通过 add(key) 添加元素</p>
-<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s.add(<span class="number">4</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s</span></span><br><span class="line">&#123;1, 2, 3, 4&#125;</span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s.add(<span class="number">4</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s</span></span><br><span class="line">&#123;1, 2, 3, 4&#125;</span><br></pre></td></tr></table></figure>
-<p>通过 remove(key) 删除元素</p>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IFormFile始终为空的问题</title>
-    <url>/Technology/BB529A094197215482DB7EF982E1C1AA/</url>
-    <content><![CDATA[<p>  之前获取上传文件都是使用Request.Form.Files获取，直到这次<br>  改成定义形参 IFormFile时才遇到这个问题。  </p>
-<span id="more"></span>
-
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// POST api/values</span></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Post</span>(<span class="params">[FromForm] IFormFile file</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">　　<span class="keyword">var</span> files = Request.Form.Files;</span><br><span class="line">　　<span class="comment">//file == null</span></span><br><span class="line">　　<span class="comment">//files != null;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>  不知道这是不是微软的一个BUG？  </p>
-<p>  解决方案有两种：</p>
-<p>  方案一：去除[ApiController]这个Attribute</p>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">Route(<span class="string">&quot;api/[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="comment">//[ApiController]</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ValuesController</span> : <span class="title">ControllerBase</span> </span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 方案二：在[FromForm]里添加Name属性:[FromForm(name &#x3D; “file”)]，这个属性需跟file参数保持一致</p>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// POST api/values</span></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Post</span>(<span class="params">[FromForm(Name = <span class="string">&quot;file&quot;</span></span>)] IFormFile file)</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>方案出自：<a href="https://stackoverflow.com/questions/52294830/iformfile-is-always-null-when-receiving-file-from-console-app">IFormFile is always null when receiving file from console app</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>.Netcore</tag>
       </tags>
   </entry>
   <entry>
@@ -250,6 +176,80 @@
       </tags>
   </entry>
   <entry>
+    <title>Python学习笔记-Python数据类型</title>
+    <url>/Technology/75225689E99ECDA945680C6721B2CD28/</url>
+    <content><![CDATA[<h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>  字符串格式化: 用 % 实现<br>  可使用 isinstance(x, str) 判断变量x是否是字符串  </p>
+<span id="more"></span>
+
+  <figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">  &gt;&gt;&gt; <span class="string">&#x27;Hello , %s&#x27;</span> <span class="meta">%</span> <span class="string">&#x27;world&#x27;</span></span><br><span class="line"><span class="string">&#x27;Hello , world&#x27;</span></span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;Hi , %s , you have $%d.&#x27;</span> <span class="meta">%</span> <span class="comment">(&#x27;Michael&#x27; , 1000000)</span></span><br><span class="line"><span class="string">&#x27;Hi , Michael , you have $1000000.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>占位符</th>
+<th>替换内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%d</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点数</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>十六进制整数</td>
+</tr>
+</tbody></table>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>  有序集合，可随时添加和删除其中的元素。<br>  有两个特点：  </p>
+<ul>
+<li>查找和插入的时间随着元素的增加而增加</li>
+<li>占用空间小，浪费内存少<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; classmates = [<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt; classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br></pre></td></tr></table></figure>
+使用 len() 函数获取长度，最后一位元素是 len(classmates) -1<br>追加元素使用 append() ，插入元素使用 insert()，删除末尾使用 pop()，删除指定 pop(1)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.append(<span class="string">&#x27;Adam&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>, <span class="string">&#x27;Adam&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.insert(<span class="number">1</span>, <span class="string">&#x27;Jack&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>, <span class="string">&#x27;Adam&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop()</span><br><span class="line"><span class="string">&#x27;Adam&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop()</span><br><span class="line"><span class="string">&#x27;Adam&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h3><p>有序列表元组，与list类似，但初始化后不能修改</p>
+<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">classmates = (<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>)</span></span><br></pre></td></tr></table></figure>
+<p>如果只有一个元素，需要加上一个逗号避免歧义</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="literal">t</span> = (<span class="number">1</span>,)</span><br><span class="line">&gt;&gt;&gt; <span class="literal">t</span></span><br><span class="line">(<span class="number">1</span>,)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h3><p>字典，全称dictionary，使用键值对(key , value)存储</p>
+<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d = &#123;<span class="string">&#x27;Michael&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;Bob&#x27;</span>: <span class="number">75</span>, <span class="string">&#x27;Tracy&#x27;</span>: <span class="number">85</span>&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d[<span class="string">&#x27;Michael&#x27;</span>]</span></span><br><span class="line">95</span><br></pre></td></tr></table></figure>
+
+<p>使用 in 判断 key 是否存在</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Thomas&#x27;</span> <span class="keyword">in</span> d</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 get() ，如果 key 不存在，可以返回 None，或者指定的value</p>
+<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d.get(<span class="string">&#x27;Thomas&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">d.get(<span class="string">&#x27;Thomas&#x27;</span>, -<span class="number">1</span>)</span></span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
+
+<p>删除一个 key ，对应的 value 也会删除，使用 pop(key) </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="string">&#x27;Bob&#x27;</span>)</span><br><span class="line"><span class="number">75</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">&#x27;Michael&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;Tracy&#x27;</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>和List相比，有两个特点:</p>
+<ul>
+<li>查找和插入速度快，不会随着key的增加而变慢</li>
+<li>需要占用大量内存，浪费内存多</li>
+</ul>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>与 dict 类似，但仅存储 key，不存储value，且key不可以重复</p>
+<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s = <span class="built_in">set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s</span></span><br><span class="line">&#123;1, 2, 3&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 add(key) 添加元素</p>
+<figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s.add(<span class="number">4</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s</span></span><br><span class="line">&#123;1, 2, 3, 4&#125;</span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s.add(<span class="number">4</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">s</span></span><br><span class="line">&#123;1, 2, 3, 4&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 remove(key) 删除元素</p>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQLServer批量修改和插入</title>
     <url>/Technology/5E7CDCAD7C9B57B815E4F825E835E744/</url>
     <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>今天在工作中遇到这么一个场景，我需要根据条件对表A做批量更新或插入。因为条件比较复杂，所以我使用了临时表B，先把需要更新或插入的数据查询出来放入临时表。然后更新表A的某字段，更新条件是A.id &#x3D; B.id，更新效果是若记录存在表A中，则更新表A的字段，若不在表A中，则插入一条记录到表A。</p>
@@ -270,6 +270,94 @@
       <tags>
         <tag>SQL</tag>
         <tag>SQL Server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu部署netcore网站</title>
+    <url>/Technology/F044DDBABEAB96FC3FE6FFED7C2544BB/</url>
+    <content><![CDATA[<p>Docker部署netcore网站，并使用Docker nginx 作为正向代理；</p>
+<span id="more"></span>
+
+<p>创建测试项目后，修改网站监听端口，具体设置方式请查阅另一篇博文《Ubuntu部署Asp.net core网站无法访问》</p>
+<p>上传publish文件到Linux，创建文件Dockerfile，编辑内容为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM mcr.microsoft.com/dotnet/core/aspnet //从该镜像拉取</span><br><span class="line">WORKDIR /app  //工作目录</span><br><span class="line">COPY . .  </span><br><span class="line">EXPOSE 80 //容器对外开放端口</span><br><span class="line">CMD [<span class="string">&quot;dotnet&quot;</span>, <span class="string">&quot;website.dll&quot;</span>] //执行命令</span><br></pre></td></tr></table></figure>
+
+<p>把网站打包成镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t website .</span><br></pre></td></tr></table></figure>
+
+<p>创建并运行容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name website -p 8080:80 -d website</span><br></pre></td></tr></table></figure>
+
+<p>至此，网站已成功发布。使用ip:port即可访问网站。</p>
+<p>接下来使用docker拉取nginx</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
+
+<p>在创建nginx容器前先创建好挂载目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> var</span><br><span class="line"><span class="built_in">mkdir</span> nginx</span><br><span class="line"><span class="built_in">cd</span> nginx</span><br><span class="line"><span class="built_in">mkdir</span> www conf logs</span><br></pre></td></tr></table></figure>
+
+<p>进入conf文件夹，创建并编辑nginx.conf配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> conf</span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>nginx.conf文件内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user nginx;</span><br><span class="line"><span class="comment"># 运行用户，默认是nginx</span></span><br><span class="line">worker_processes auto;</span><br><span class="line"><span class="comment"># nginx进程数,一般设置为和cpu核数一样</span></span><br><span class="line">error_log /var/log/nginx/error.log;</span><br><span class="line"><span class="comment"># 全局错误日志路径</span></span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"><span class="comment"># 进程pid路径</span></span><br><span class="line"><span class="comment"># Load dynamic modules. See /usr/share/nginx/README.dynamic.</span></span><br><span class="line"><span class="comment"># 负载动态模块</span></span><br><span class="line">include /usr/share/nginx/modules/*.conf;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line"><span class="comment"># 工作模式与连接数上限</span></span><br><span class="line">    worker_connections 1024;</span><br><span class="line">   <span class="comment"># 单个进程的最大连接数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"><span class="comment"># 设置http服务器</span></span><br><span class="line">    log_format  main  <span class="string">&#x27;$http_host $server_addr $remote_addr [$time_local] &quot;$request&quot; $status  $request_body  $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time $upstream_response_time&#x27;</span>;</span><br><span class="line">    <span class="comment"># 设置日志的格式</span></span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line">    <span class="comment"># 访问日志的路径</span></span><br><span class="line"></span><br><span class="line">    sendfile            on;</span><br><span class="line">    <span class="comment"># 开启高效传输模式</span></span><br><span class="line">    tcp_nopush          on;</span><br><span class="line">    <span class="comment"># 激活tcp_nopush参数可以允许把http response header和文件的开始放在一个文件里发布，作用是减少网络报文段的数量</span></span><br><span class="line">    tcp_nodelay         on;</span><br><span class="line">    <span class="comment"># 激活tcp_nodelay，内核会等待将更多的字节组成一个数据包，从而提高I/O性能</span></span><br><span class="line">    keepalive_timeout   65;</span><br><span class="line">    <span class="comment"># 长连接超时时间，单位是秒</span></span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    <span class="comment"># 为了快速处理静态数据集，例如服务器名称， 映射指令的值，MIME类型，请求头字符串的名称，nginx使用哈希表</span></span><br><span class="line"></span><br><span class="line">    include             /etc/nginx/mime.types;</span><br><span class="line">    <span class="comment"># 文件扩展名与类型映射表</span></span><br><span class="line">    default_type        application/octet-stream;</span><br><span class="line">    <span class="comment"># 默认文件类型</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span></span><br><span class="line">    <span class="comment"># 加载模块化配置文件</span></span><br><span class="line">    <span class="comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span></span><br><span class="line">    <span class="comment"># for more information.</span></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">    <span class="comment"># 基于域名的虚拟主机</span></span><br><span class="line">        listen       80 default_server;</span><br><span class="line">        <span class="comment"># 监听端口</span></span><br><span class="line">        listen       [::]:80 default_server;</span><br><span class="line">        server_name  _;</span><br><span class="line">        <span class="comment"># 域名</span></span><br><span class="line">        <span class="comment">#root         /usr/share/nginx/html;</span></span><br><span class="line">        <span class="comment"># 站点根目录，即网站程序存放目录</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        <span class="comment"># 默认服务器块的加载配置文件</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://ip:8080;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>创建并运行容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 80:80 --name blog -v <span class="variable">$PWD</span>/www:/usr/share/nginx/html -v <span class="variable">$PWD</span>/conf/nginx.conf:/etc/nginx/nginx.conf -v <span class="variable">$PWD</span>/logs:/var/log/nginx nginx</span><br></pre></td></tr></table></figure>
+
+<p>Nginx部署完成，此刻直接输入ip可直接访问网站。</p>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>.Netcore</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu部署netcore网站无法访问</title>
+    <url>/Technology/8081EB1E811675876C731BAF7B422099/</url>
+    <content><![CDATA[<p>记录一次发布.netcore网站到linux上的问题</p>
+<span id="more"></span>
+
+<p>前几天应工作需要，在阿里云上部署一个测试站点。本以为分分钟的事情，没想到打脸了。</p>
+<p>当时直接新建一个webapi项目，publish后直接上传到阿里云，随后设置nginx转发网站端口5000。</p>
+<p>接着打开网站测试访问，结果傻眼了，502…..。</p>
+<p>于是乎，使用dotnet命令行启动，指定端口8080，更改nginx配置转而监听8080。测试，又打不开。</p>
+<p>明明是按照众大神的文章一步一步来的，怎么会出错呢？搞不明白。随后老老实实阅读微软官方文档，</p>
+<p>终于发现问题所在。原来是我没有设置Kestrel的监听端口。</p>
+<p>论基础的重要性！！！要好好读书o(╥﹏╥)o，夯实基本功。</p>
+<p>经历说完了，接下来说说如何配置网站端口。</p>
+<p>设置的方式有三种：</p>
+<p><strong>第一种：Program类的CreateHostBuilder方法指定Urls</strong></p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseUrls(<span class="string">&quot;http://*:8080&quot;</span>);</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二种：使用配置文件Hosting.json</strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;urls&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://*:8080&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>项目需要添加引用</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.FileExtensions&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.Json&quot;</span>: <span class="string">&quot;1.0.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Program代码</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.SetBasePath(Directory.GetCurrentDirectory());</span><br><span class="line">                    configHost.AddJsonFile(<span class="string">&quot;hosting.json&quot;</span>, optional: <span class="literal">true</span>, reloadOnChange : <span class="literal">true</span>);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第三种：使用命令行配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet demo.dll --environment development --urls <span class="string">&quot;http://*:8081&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>项目需要添加引用</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.CommandLine&quot;</span>: <span class="string">&quot;3.1.2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Program代码</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.AddCommandLine(args);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注：三种方式可同时配置，但是具有优先级：UseUrls &lt; 文件配置 &lt; 命令行配置</p>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>.Netcore</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -370,118 +458,6 @@
       </categories>
       <tags>
         <tag>Tool</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu部署netcore网站无法访问</title>
-    <url>/Technology/8081EB1E811675876C731BAF7B422099/</url>
-    <content><![CDATA[<p>记录一次发布.netcore网站到linux上的问题</p>
-<span id="more"></span>
-
-<p>前几天应工作需要，在阿里云上部署一个测试站点。本以为分分钟的事情，没想到打脸了。</p>
-<p>当时直接新建一个webapi项目，publish后直接上传到阿里云，随后设置nginx转发网站端口5000。</p>
-<p>接着打开网站测试访问，结果傻眼了，502…..。</p>
-<p>于是乎，使用dotnet命令行启动，指定端口8080，更改nginx配置转而监听8080。测试，又打不开。</p>
-<p>明明是按照众大神的文章一步一步来的，怎么会出错呢？搞不明白。随后老老实实阅读微软官方文档，</p>
-<p>终于发现问题所在。原来是我没有设置Kestrel的监听端口。</p>
-<p>论基础的重要性！！！要好好读书o(╥﹏╥)o，夯实基本功。</p>
-<p>经历说完了，接下来说说如何配置网站端口。</p>
-<p>设置的方式有三种：</p>
-<p><strong>第一种：Program类的CreateHostBuilder方法指定Urls</strong></p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseUrls(<span class="string">&quot;http://*:8080&quot;</span>);</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>第二种：使用配置文件Hosting.json</strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;urls&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://*:8080&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>项目需要添加引用</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.FileExtensions&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.Json&quot;</span>: <span class="string">&quot;1.0.0&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>Program代码</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.SetBasePath(Directory.GetCurrentDirectory());</span><br><span class="line">                    configHost.AddJsonFile(<span class="string">&quot;hosting.json&quot;</span>, optional: <span class="literal">true</span>, reloadOnChange : <span class="literal">true</span>);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>第三种：使用命令行配置</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet demo.dll --environment development --urls <span class="string">&quot;http://*:8081&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>项目需要添加引用</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Microsoft.Extensions.Configuration.CommandLine&quot;</span>: <span class="string">&quot;3.1.2&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>Program代码</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IHostBuilder <span class="title">CreateHostBuilder</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> =&gt;</span><br><span class="line">            Host.CreateDefaultBuilder(args)</span><br><span class="line">                .ConfigureWebHostDefaults(webBuilder =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    webBuilder.UseStartup&lt;Startup&gt;();</span><br><span class="line">                &#125;).ConfigureHostConfiguration(configHost =&gt; &#123; </span><br><span class="line">                    configHost.AddCommandLine(args);</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>注：三种方式可同时配置，但是具有优先级：UseUrls &lt; 文件配置 &lt; 命令行配置</p>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>.Netcore</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu部署netcore网站</title>
-    <url>/Technology/F044DDBABEAB96FC3FE6FFED7C2544BB/</url>
-    <content><![CDATA[<p>Docker部署netcore网站，并使用Docker nginx 作为正向代理；</p>
-<span id="more"></span>
-
-<p>创建测试项目后，修改网站监听端口，具体设置方式请查阅另一篇博文《Ubuntu部署Asp.net core网站无法访问》</p>
-<p>上传publish文件到Linux，创建文件Dockerfile，编辑内容为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM mcr.microsoft.com/dotnet/core/aspnet //从该镜像拉取</span><br><span class="line">WORKDIR /app  //工作目录</span><br><span class="line">COPY . .  </span><br><span class="line">EXPOSE 80 //容器对外开放端口</span><br><span class="line">CMD [<span class="string">&quot;dotnet&quot;</span>, <span class="string">&quot;website.dll&quot;</span>] //执行命令</span><br></pre></td></tr></table></figure>
-
-<p>把网站打包成镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t website .</span><br></pre></td></tr></table></figure>
-
-<p>创建并运行容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name website -p 8080:80 -d website</span><br></pre></td></tr></table></figure>
-
-<p>至此，网站已成功发布。使用ip:port即可访问网站。</p>
-<p>接下来使用docker拉取nginx</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
-
-<p>在创建nginx容器前先创建好挂载目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> var</span><br><span class="line"><span class="built_in">mkdir</span> nginx</span><br><span class="line"><span class="built_in">cd</span> nginx</span><br><span class="line"><span class="built_in">mkdir</span> www conf logs</span><br></pre></td></tr></table></figure>
-
-<p>进入conf文件夹，创建并编辑nginx.conf配置文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> conf</span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>nginx.conf文件内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user nginx;</span><br><span class="line"><span class="comment"># 运行用户，默认是nginx</span></span><br><span class="line">worker_processes auto;</span><br><span class="line"><span class="comment"># nginx进程数,一般设置为和cpu核数一样</span></span><br><span class="line">error_log /var/log/nginx/error.log;</span><br><span class="line"><span class="comment"># 全局错误日志路径</span></span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"><span class="comment"># 进程pid路径</span></span><br><span class="line"><span class="comment"># Load dynamic modules. See /usr/share/nginx/README.dynamic.</span></span><br><span class="line"><span class="comment"># 负载动态模块</span></span><br><span class="line">include /usr/share/nginx/modules/*.conf;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line"><span class="comment"># 工作模式与连接数上限</span></span><br><span class="line">    worker_connections 1024;</span><br><span class="line">   <span class="comment"># 单个进程的最大连接数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"><span class="comment"># 设置http服务器</span></span><br><span class="line">    log_format  main  <span class="string">&#x27;$http_host $server_addr $remote_addr [$time_local] &quot;$request&quot; $status  $request_body  $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time $upstream_response_time&#x27;</span>;</span><br><span class="line">    <span class="comment"># 设置日志的格式</span></span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line">    <span class="comment"># 访问日志的路径</span></span><br><span class="line"></span><br><span class="line">    sendfile            on;</span><br><span class="line">    <span class="comment"># 开启高效传输模式</span></span><br><span class="line">    tcp_nopush          on;</span><br><span class="line">    <span class="comment"># 激活tcp_nopush参数可以允许把http response header和文件的开始放在一个文件里发布，作用是减少网络报文段的数量</span></span><br><span class="line">    tcp_nodelay         on;</span><br><span class="line">    <span class="comment"># 激活tcp_nodelay，内核会等待将更多的字节组成一个数据包，从而提高I/O性能</span></span><br><span class="line">    keepalive_timeout   65;</span><br><span class="line">    <span class="comment"># 长连接超时时间，单位是秒</span></span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    <span class="comment"># 为了快速处理静态数据集，例如服务器名称， 映射指令的值，MIME类型，请求头字符串的名称，nginx使用哈希表</span></span><br><span class="line"></span><br><span class="line">    include             /etc/nginx/mime.types;</span><br><span class="line">    <span class="comment"># 文件扩展名与类型映射表</span></span><br><span class="line">    default_type        application/octet-stream;</span><br><span class="line">    <span class="comment"># 默认文件类型</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span></span><br><span class="line">    <span class="comment"># 加载模块化配置文件</span></span><br><span class="line">    <span class="comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span></span><br><span class="line">    <span class="comment"># for more information.</span></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">    <span class="comment"># 基于域名的虚拟主机</span></span><br><span class="line">        listen       80 default_server;</span><br><span class="line">        <span class="comment"># 监听端口</span></span><br><span class="line">        listen       [::]:80 default_server;</span><br><span class="line">        server_name  _;</span><br><span class="line">        <span class="comment"># 域名</span></span><br><span class="line">        <span class="comment">#root         /usr/share/nginx/html;</span></span><br><span class="line">        <span class="comment"># 站点根目录，即网站程序存放目录</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        <span class="comment"># 默认服务器块的加载配置文件</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://ip:8080;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>创建并运行容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 80:80 --name blog -v <span class="variable">$PWD</span>/www:/usr/share/nginx/html -v <span class="variable">$PWD</span>/conf/nginx.conf:/etc/nginx/nginx.conf -v <span class="variable">$PWD</span>/logs:/var/log/nginx nginx</span><br></pre></td></tr></table></figure>
-
-<p>Nginx部署完成，此刻直接输入ip可直接访问网站。</p>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>.Netcore</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Webbench的使用</title>
-    <url>/Tool/E78756E315C538EE0A848E9B01C67DED/</url>
-    <content><![CDATA[<p>  Webbench是一个在linux下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL，测试网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。  </p>
-<p>  下载好tar.gz文件，上传到linux。  </p>
-<span id="more"></span>
-
-<ul>
-<li>编译安装<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">root@ip:<span class="regexp">/home/</span>ftp/webbench-<span class="number">1.5</span><span class="comment"># make install</span></span><br><span class="line">cc -Wall -ggdb -W -O  -o webbench webbench.o  </span><br><span class="line">install -s webbench <span class="regexp">/usr/</span>local/bin    </span><br><span class="line">install -m <span class="number">644</span> webbench.<span class="number">1</span> <span class="regexp">/usr/</span>local<span class="regexp">/man/m</span>an1    </span><br><span class="line">install -d <span class="regexp">/usr/</span>local<span class="regexp">/share/</span>doc/webbench</span><br><span class="line">install -m <span class="number">644</span> debian<span class="regexp">/copyright /u</span>sr<span class="regexp">/local/</span>share<span class="regexp">/doc/</span>webbench</span><br><span class="line">install -m <span class="number">644</span> debian<span class="regexp">/changelog /u</span>sr<span class="regexp">/local/</span>share<span class="regexp">/doc/</span>webbench</span><br></pre></td></tr></table></figure></li>
-<li>使用<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">root</span>@ip:/home/ftp/webbench-<span class="number">1</span>.<span class="number">5</span># webbench -c <span class="number">100</span> http://fedupapi.azurewebsites.net/</span><br><span class="line"><span class="attribute">Webbench</span> - Simple Web Benchmark <span class="number">1</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">Copyright</span> (c) Radim Kolar <span class="number">1997</span>-<span class="number">2004</span>, GPL Open Source Software.</span><br><span class="line"></span><br><span class="line"><span class="attribute">Benchmarking</span>: GET http://fedupapi.azurewebsites.net/</span><br><span class="line"><span class="attribute">100</span> clients, running <span class="number">30</span> sec.</span><br><span class="line"></span><br><span class="line"><span class="attribute">Speed</span>=<span class="number">10854</span> pages/min, <span class="number">76339</span> bytes/sec.</span><br><span class="line"><span class="attribute">Requests</span>: <span class="number">5427</span> susceed, <span class="number">0</span> failed.</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>如果执行 make install 出错</p>
-<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">xx<span class="title">@xx</span>:~/WebBench$ make install</span><br><span class="line"><span class="keyword">cc</span> -Wall -ggdb -W -O   -<span class="keyword">c</span> -o webbench.o webbench.<span class="keyword">c</span></span><br><span class="line">webbench.<span class="keyword">c</span>: In function ‘alarm_handler’:</span><br><span class="line">webbench.<span class="keyword">c</span>:<span class="number">80</span>:<span class="number">31</span>: warning: unused parameter ‘signal’ [-Wunused-parameter]</span><br><span class="line">static void alarm_handler(int signal)</span><br></pre></td></tr></table></figure>
-
-<p>解决方案(WebBench 依赖 ctags)</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install ctags </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Test</tag>
       </tags>
   </entry>
   <entry>
@@ -591,44 +567,27 @@
       </tags>
   </entry>
   <entry>
-    <title>关于IoC和DI</title>
-    <url>/Technology/58FD57A2835616B143E317EA49A22A80/</url>
-    <content><![CDATA[<h1 id="IoC：Inversion-of-Control（控制反转）"><a href="#IoC：Inversion-of-Control（控制反转）" class="headerlink" title="IoC：Inversion of Control（控制反转）"></a>IoC：Inversion of Control（控制反转）</h1><h2 id="谁控制谁？"><a href="#谁控制谁？" class="headerlink" title="谁控制谁？"></a>谁控制谁？</h2><pre><code> IoC容器控制对象的创建，也就是IoC容器控制对象
-</code></pre>
-<h2 id="控制了什么？"><a href="#控制了什么？" class="headerlink" title="控制了什么？"></a>控制了什么？</h2><pre><code> 控制了外部资源的获取（如对象、文件等）
-</code></pre>
-<h2 id="正转和反转："><a href="#正转和反转：" class="headerlink" title="正转和反转："></a>正转和反转：</h2><pre><code> 正转：如在传统应用程序里，我们主动去new对象
- 反转：容器创建对注入依赖对象
-</code></pre>
-<h2 id="为什么是反转？"><a href="#为什么是反转？" class="headerlink" title="为什么是反转？"></a>为什么是反转？</h2><pre><code> 因为是容器帮助我们查找并注入依赖对象
-</code></pre>
+    <title>Webbench的使用</title>
+    <url>/Tool/E78756E315C538EE0A848E9B01C67DED/</url>
+    <content><![CDATA[<p>  Webbench是一个在linux下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL，测试网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。  </p>
+<p>  下载好tar.gz文件，上传到linux。  </p>
 <span id="more"></span>
 
-<h1 id="DI：Dependency-Injection（依赖注入）"><a href="#DI：Dependency-Injection（依赖注入）" class="headerlink" title="DI：Dependency Injection（依赖注入）"></a>DI：Dependency Injection（依赖注入）</h1><p>由容器动态地将某个依赖关系注入到组件之中</p>
-<p>依赖注入（Dependency Injection），是这样一个过程：由于某客户类只依赖于服务类的一个接口，而不依赖于具体服务类，所以客户类只定义一个注入点。在程序运行过程中，客户类不直接实例化具体服务类实例，而是客户类的运行上下文环境或专门组件负责实例化服务类，然后将其注入到客户类中，保证客户类的正常运行。</p>
-<h2 id="谁依赖谁？"><a href="#谁依赖谁？" class="headerlink" title="谁依赖谁？"></a>谁依赖谁？</h2><pre><code> 应用程序依赖容器
-</code></pre>
-<h2 id="为什么需要依赖？"><a href="#为什么需要依赖？" class="headerlink" title="为什么需要依赖？"></a>为什么需要依赖？</h2><pre><code> 应用程序需要IoC容器来提供对象需要的外部资源
-</code></pre>
-<h2 id="谁注入谁？"><a href="#谁注入谁？" class="headerlink" title="谁注入谁？"></a>谁注入谁？</h2><pre><code> IoC容器注入应用程序某个对象，应用程序依赖的对象
-</code></pre>
-<h2 id="注入了什么？"><a href="#注入了什么？" class="headerlink" title="注入了什么？"></a>注入了什么？</h2><pre><code> 注入了某个对象所需要的外部资源（包括对象、资源、常量数据等）
-</code></pre>
-<p>依赖注入明确描述了被注入对象依赖IoC容器配置依赖对象</p>
-<h2 id="依赖注入三种方式"><a href="#依赖注入三种方式" class="headerlink" title="依赖注入三种方式"></a>依赖注入三种方式</h2><pre><code> 1.构造函数注入：在构造函数种借助参数将依赖的对象注入到创建的对象种
- 2.属性注入：通过添加Injection Attribute特性的方式将属性设置为自动注入属性
- 3.方法注入：通过调用方法实现对字段(对象)或属性(对象)的初始化
-</code></pre>
-<h2 id="依赖原则"><a href="#依赖原则" class="headerlink" title="依赖原则"></a>依赖原则</h2><pre><code> 1.高层次模块不应该依赖于低层次模块，它们都应该依赖抽象
- 2.抽象不应该依赖具体，具体应该依赖抽象
-</code></pre>
-<p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html">引用：依赖注入那些事</a></p>
+<ul>
+<li>编译安装<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">root@ip:<span class="regexp">/home/</span>ftp/webbench-<span class="number">1.5</span><span class="comment"># make install</span></span><br><span class="line">cc -Wall -ggdb -W -O  -o webbench webbench.o  </span><br><span class="line">install -s webbench <span class="regexp">/usr/</span>local/bin    </span><br><span class="line">install -m <span class="number">644</span> webbench.<span class="number">1</span> <span class="regexp">/usr/</span>local<span class="regexp">/man/m</span>an1    </span><br><span class="line">install -d <span class="regexp">/usr/</span>local<span class="regexp">/share/</span>doc/webbench</span><br><span class="line">install -m <span class="number">644</span> debian<span class="regexp">/copyright /u</span>sr<span class="regexp">/local/</span>share<span class="regexp">/doc/</span>webbench</span><br><span class="line">install -m <span class="number">644</span> debian<span class="regexp">/changelog /u</span>sr<span class="regexp">/local/</span>share<span class="regexp">/doc/</span>webbench</span><br></pre></td></tr></table></figure></li>
+<li>使用<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">root</span>@ip:/home/ftp/webbench-<span class="number">1</span>.<span class="number">5</span># webbench -c <span class="number">100</span> http://fedupapi.azurewebsites.net/</span><br><span class="line"><span class="attribute">Webbench</span> - Simple Web Benchmark <span class="number">1</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">Copyright</span> (c) Radim Kolar <span class="number">1997</span>-<span class="number">2004</span>, GPL Open Source Software.</span><br><span class="line"></span><br><span class="line"><span class="attribute">Benchmarking</span>: GET http://fedupapi.azurewebsites.net/</span><br><span class="line"><span class="attribute">100</span> clients, running <span class="number">30</span> sec.</span><br><span class="line"></span><br><span class="line"><span class="attribute">Speed</span>=<span class="number">10854</span> pages/min, <span class="number">76339</span> bytes/sec.</span><br><span class="line"><span class="attribute">Requests</span>: <span class="number">5427</span> susceed, <span class="number">0</span> failed.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>如果执行 make install 出错</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">xx<span class="title">@xx</span>:~/WebBench$ make install</span><br><span class="line"><span class="keyword">cc</span> -Wall -ggdb -W -O   -<span class="keyword">c</span> -o webbench.o webbench.<span class="keyword">c</span></span><br><span class="line">webbench.<span class="keyword">c</span>: In function ‘alarm_handler’:</span><br><span class="line">webbench.<span class="keyword">c</span>:<span class="number">80</span>:<span class="number">31</span>: warning: unused parameter ‘signal’ [-Wunused-parameter]</span><br><span class="line">static void alarm_handler(int signal)</span><br></pre></td></tr></table></figure>
+
+<p>解决方案(WebBench 依赖 ctags)</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install ctags </span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Technology</category>
+        <category>Tool</category>
       </categories>
       <tags>
-        <tag>Design</tag>
+        <tag>Test</tag>
       </tags>
   </entry>
   <entry>
@@ -670,6 +629,47 @@
       <tags>
         <tag>Git</tag>
         <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于IoC和DI</title>
+    <url>/Technology/58FD57A2835616B143E317EA49A22A80/</url>
+    <content><![CDATA[<h1 id="IoC：Inversion-of-Control（控制反转）"><a href="#IoC：Inversion-of-Control（控制反转）" class="headerlink" title="IoC：Inversion of Control（控制反转）"></a>IoC：Inversion of Control（控制反转）</h1><h2 id="谁控制谁？"><a href="#谁控制谁？" class="headerlink" title="谁控制谁？"></a>谁控制谁？</h2><pre><code> IoC容器控制对象的创建，也就是IoC容器控制对象
+</code></pre>
+<h2 id="控制了什么？"><a href="#控制了什么？" class="headerlink" title="控制了什么？"></a>控制了什么？</h2><pre><code> 控制了外部资源的获取（如对象、文件等）
+</code></pre>
+<h2 id="正转和反转："><a href="#正转和反转：" class="headerlink" title="正转和反转："></a>正转和反转：</h2><pre><code> 正转：如在传统应用程序里，我们主动去new对象
+ 反转：容器创建对注入依赖对象
+</code></pre>
+<h2 id="为什么是反转？"><a href="#为什么是反转？" class="headerlink" title="为什么是反转？"></a>为什么是反转？</h2><pre><code> 因为是容器帮助我们查找并注入依赖对象
+</code></pre>
+<span id="more"></span>
+
+<h1 id="DI：Dependency-Injection（依赖注入）"><a href="#DI：Dependency-Injection（依赖注入）" class="headerlink" title="DI：Dependency Injection（依赖注入）"></a>DI：Dependency Injection（依赖注入）</h1><p>由容器动态地将某个依赖关系注入到组件之中</p>
+<p>依赖注入（Dependency Injection），是这样一个过程：由于某客户类只依赖于服务类的一个接口，而不依赖于具体服务类，所以客户类只定义一个注入点。在程序运行过程中，客户类不直接实例化具体服务类实例，而是客户类的运行上下文环境或专门组件负责实例化服务类，然后将其注入到客户类中，保证客户类的正常运行。</p>
+<h2 id="谁依赖谁？"><a href="#谁依赖谁？" class="headerlink" title="谁依赖谁？"></a>谁依赖谁？</h2><pre><code> 应用程序依赖容器
+</code></pre>
+<h2 id="为什么需要依赖？"><a href="#为什么需要依赖？" class="headerlink" title="为什么需要依赖？"></a>为什么需要依赖？</h2><pre><code> 应用程序需要IoC容器来提供对象需要的外部资源
+</code></pre>
+<h2 id="谁注入谁？"><a href="#谁注入谁？" class="headerlink" title="谁注入谁？"></a>谁注入谁？</h2><pre><code> IoC容器注入应用程序某个对象，应用程序依赖的对象
+</code></pre>
+<h2 id="注入了什么？"><a href="#注入了什么？" class="headerlink" title="注入了什么？"></a>注入了什么？</h2><pre><code> 注入了某个对象所需要的外部资源（包括对象、资源、常量数据等）
+</code></pre>
+<p>依赖注入明确描述了被注入对象依赖IoC容器配置依赖对象</p>
+<h2 id="依赖注入三种方式"><a href="#依赖注入三种方式" class="headerlink" title="依赖注入三种方式"></a>依赖注入三种方式</h2><pre><code> 1.构造函数注入：在构造函数种借助参数将依赖的对象注入到创建的对象种
+ 2.属性注入：通过添加Injection Attribute特性的方式将属性设置为自动注入属性
+ 3.方法注入：通过调用方法实现对字段(对象)或属性(对象)的初始化
+</code></pre>
+<h2 id="依赖原则"><a href="#依赖原则" class="headerlink" title="依赖原则"></a>依赖原则</h2><pre><code> 1.高层次模块不应该依赖于低层次模块，它们都应该依赖抽象
+ 2.抽象不应该依赖具体，具体应该依赖抽象
+</code></pre>
+<p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html">引用：依赖注入那些事</a></p>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>Design</tag>
       </tags>
   </entry>
   <entry>
@@ -762,8 +762,8 @@
 <span id="more"></span>
 
 <h1 id="1-1-数据的表示"><a href="#1-1-数据的表示" class="headerlink" title="1.1 数据的表示"></a>1.1 数据的表示</h1><h2 id="1-1-1-进制的转换"><a href="#1-1-1-进制的转换" class="headerlink" title="1.1.1 进制的转换"></a>1.1.1 进制的转换</h2><ol>
-<li>R进制转十进制:将每位数字用R^k表示然后相加，k与该位小数点的距离有关，小数点左边第一位为0，右边第一位为-1，往左递增，往右递减，如二进制10100.01转十进制10100.01&#x3D;$1<em>2^4+1</em>2^2+1*2^{-2}$</li>
-<li>十进制转R进制: 整数位使用短除法，即将十进制数除以R再取余，直至余数为零商为1，然后将余数由下往上按顺序排列，小数位乘以R，每乘一次就取它的整数位（ 整数位为零时就取零)，直至小数位为零，然后将取得的整数位由上往下排列即可。如97转二进制</li>
+<li>R进制转十进制:将每位数字用R^k表示然后相加，k与该位小数点的距离有关，小数点左边第一位为0，右边第一位为-1，往左递增，往右递减，如二进制10100.01转十进制10100.01&#x3D;1*2<sup>4</sup>+1*2<sup>2</sup>+1*2<sup>-2</sup></li>
+<li>十进制转R进制: 整数位使用短除法，即将十进制数除以R再取余，直至余数为零商为1，然后将余数由下往上按顺序排列，小数位乘以R，每乘一次就取它的整数位(整数位为零时就取零)，直至小数位为零，然后将取得的整数位由上往下排列即可。如97转二进制</li>
 </ol>
 <img src="Untitled.png" width="20%" height="20%">
     
@@ -786,8 +786,8 @@
 <img src="Untitled%203.png">
 
 <h2 id="1-1-3-浮点数的运算"><a href="#1-1-3-浮点数的运算" class="headerlink" title="1.1.3 浮点数的运算"></a>1.1.3 浮点数的运算</h2><ol>
-<li>概念：浮点数就是科学计算法，即1000&#x3D;1x10³，1是尾数，10是基数，³是指数</li>
-<li>运算：当指数不等时，低阶转高阶，尾数相加后格式化（例如：1.0x10³+1.19x10² &#x3D; 1.0x10³+0.119x10³ &#x3D; 1.119x10³，格式化指尾数的整数必须是个位数，10.19x10² &#x3D;&gt; 1.019x10³）</li>
+<li>概念：浮点数就是科学计算法，即1000&#x3D;1*10³，1是尾数，10是基数，³是指数</li>
+<li>运算：当指数不等时，低阶转高阶，尾数相加后格式化（例如：1.0*10³+1.19*10² &#x3D; 1.0*10³+0.119*10³ &#x3D; 1.119*10³，格式化指尾数的整数必须是个位数，10.19*10² &#x3D;&gt; 1.019*10³）</li>
 </ol>
 <h1 id="1-2-计算机结构"><a href="#1-2-计算机结构" class="headerlink" title="1.2 计算机结构"></a>1.2 计算机结构</h1><p><em>中央处理器CPU由运算器和控制器构成</em></p>
 <h2 id="1-2-1-运算器"><a href="#1-2-1-运算器" class="headerlink" title="1.2.1 运算器"></a>1.2.1 运算器</h2><ol>
@@ -857,9 +857,9 @@
 <ol>
 <li>编址相关计算</li>
 </ol>
-<p><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/Untitled%209.png" alt="其中H表示十六进制，存储单元数量等于大的内存地址减去小的内存地址再加上一；K=1024，第一个空即为存储单元数量除以1024；(C7FFF-AC000+1)/1024 = 112K 个地址单元。
-$[\frac{112K*16}{28*16K*X}]=1$；X = 4 , 该芯片每个存储单元存储4位。"></p>
-<p>其中H表示十六进制，存储单元数量等于大的内存地址减去小的内存地址再加上一；K&#x3D;1024，第一个空即为存储单元数量除以1024；(C7FFF-AC000+1)&#x2F;1024 &#x3D; 112K 个地址单元。<br>$[\frac{112K<em>16}{28</em>16K*X}]&#x3D;1$；X &#x3D; 4 , 该芯片每个存储单元存储4位。</p>
+<img src="Untitled%209.png">
+
+<p>其中H表示十六进制，存储单元数量等于大的内存地址减去小的内存地址再加上1；K&#x3D;1024，第一个空即为存储单元数量除以1024；(C7FFF-AC000+1)&#x2F;1024 &#x3D; 112K 个地址单元。<br><math xmlns='http://www.w3.org/1998/Math/MathML'><mfrac><mrow><mn>112K*16</mn></mrow><mrow><mn>28*16K*X</mn></mrow></mfrac></math> &#x3D;1；X &#x3D; 4 , 该芯片每个存储单元存储4位。</p>
 <h1 id="1-9-磁盘结构和参数"><a href="#1-9-磁盘结构和参数" class="headerlink" title="1.9 磁盘结构和参数"></a>1.9 磁盘结构和参数</h1><p>磁头必须依次读取扇区(物理块)，每次读取都会放入缓存区，缓存区可以是单个或多个，存放完会在缓存区进行处理，处理期间磁头的读取不会停止。<br>磁盘调度管理中，先进行移臂调度寻找磁道，再进行旋转调度寻找扇区。</p>
 <img src="Untitled%2010.png">
 
@@ -897,8 +897,8 @@ $[\frac{112K*16}{28*16K*X}]=1$；X = 4 , 该芯片每个存储单元存储4位�
 
 <h2 id="1-12-3-校验码-海明校验码"><a href="#1-12-3-校验码-海明校验码" class="headerlink" title="1.12.3 校验码-海明校验码"></a>1.12.3 校验码-海明校验码</h2><p>利用多组数位的奇偶性来检错和纠错</p>
 <ol>
-<li>确认校验码位数：2^r&gt;&#x3D;k+r+1(k:信息数位数，r:校验码位数)</li>
-<li>确认校验码位置：2^n</li>
+<li>确认校验码位数：2<sup>r</sup>&#x3D;k+r+1(k:信息数位数，r:校验码位数)</li>
+<li>确认校验码位置：2<sup>n</sup></li>
 <li>求出校验码：下面例图</li>
 </ol>
 <img src="Untitled%2017.png">
